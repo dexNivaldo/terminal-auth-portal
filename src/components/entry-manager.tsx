@@ -123,7 +123,7 @@ const EntryManager: FunctionComponent = () => {
             </div>
           )}
 
-          {isLoading || loadingEntries && (
+          {(isLoading || loadingEntries) && (
 
             <div role="status" className="flex justify-center mt-3">
                 <svg aria-hidden="true" className="w-8 h-8 text-gray-700 animate-spin dark:text-purple-900 fill-purple-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
