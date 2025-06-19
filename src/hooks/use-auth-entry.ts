@@ -17,14 +17,14 @@ export default function useAuthEntry() {
     const [result, setResult] = useState<AuthResponse | null>(null);
 
     const { items: terminals } = useAsyncList<Terminal[]>(getTerminals)
-    const { items: savedEntries, fetch: fetchEntries } = useAsyncList<AuthEntry[]>(getAuthEntries)
+    const { items: savedEntries, fetch: fetchEntries, loading: loadingEntries } = useAsyncList<AuthEntry[]>(getAuthEntries)
 
-    const authenticate = async () => {
+    const authenticate = async (authEntry?: AuthEntry) => {
         try {
             setIsLoading(true)
             setResult(null)
             const selectedTerminal = terminals.find(t => t.id === terminal)
-            const response = await authTerminal(selectedTerminal?.code || '', patente)
+            const response = await authTerminal(authEntry?.terminal?.code || selectedTerminal?.code || '', authEntry?.patente || patente, authEntry)
 
             const data = await response.json();
 
@@ -45,13 +45,14 @@ export default function useAuthEntry() {
     }
 
     const handleSave = async () => {
+        const settings = JSON.parse(localStorage.getItem('settings') || '{}')
         if (!patente || !terminal) return;
 
         const newEntry: Partial<AuthEntryInput> = {
             patente,
             terminal,
-            isProd: false,
-            role: 'AA'
+            isProd: settings.isProd || false,
+            role: settings.role || 'AA'
         };
 
         try {
@@ -60,12 +61,16 @@ export default function useAuthEntry() {
             setShowToast(true);
             setSuccess('Entry saved successfully');
             fetchEntries()
+            setTimeout(() => {
+                setShowToast(false)
+                setSuccess('')
+            }, 2000);
         } catch (error) {
             console.log(error)
             setError('Error saving entry')
             setTimeout(() => {
                 setShowToast(false)
-                setSuccess('')
+                setError('')
             }, 2000);
         } finally {
             setIsLoading(false)
@@ -93,7 +98,7 @@ export default function useAuthEntry() {
     const handleTagClick = (entry: AuthEntry) => {
         setPatente(entry.patente);
         setTerminal(entry.terminal.id);
-        authenticate();
+        authenticate(entry);
     };
 
     const handleOpenLink = (link: string) => {
@@ -113,6 +118,7 @@ export default function useAuthEntry() {
 
     return {
         isLoading,
+        loadingEntries,
         error,
         success,
         showToast,
