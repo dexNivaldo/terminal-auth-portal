@@ -1,4 +1,3 @@
-import { AuthEntry } from "@/types/auth-entry";
 import { supabase } from "./supabase";
 
 export async function getUser() {
@@ -7,11 +6,11 @@ export async function getUser() {
   return user
 }
 
-export const authTerminal = async (terminal: string, patente: string, entry?: AuthEntry) => {
+export const authTerminal = async (terminal: string, patente: string, role: string) => {
   const user = await getUser()
   const settings = JSON.parse(localStorage.getItem('settings') || '{}')
 
-  const baseUrl = (entry?.isProd ?? settings.isProd) ? import.meta.env.VITE_PROD_API_URL : import.meta.env.VITE_API_URL
+  const baseUrl = settings.isProd ? import.meta.env.VITE_PROD_API_URL : import.meta.env.VITE_API_URL
   return fetch(`${baseUrl}/Auth`, {
     method: 'POST',
     headers: {
@@ -36,9 +35,9 @@ export const authTerminal = async (terminal: string, patente: string, entry?: Au
       ],
       selection: patente,
       user: user?.email,
-      key: (entry?.isProd ?? settings.isProd) ? import.meta.env.VITE_PROD_AUTH_KEY : import.meta.env.VITE_AUTH_KEY,
+      key: settings.isProd ? import.meta.env.VITE_PROD_AUTH_KEY : import.meta.env.VITE_AUTH_KEY,
       terminalCode: terminal,
-      isCarrier: (entry?.role || settings.role) === 'CARRIER'
+      isCarrier: role === 'CARRIER'
     }),
   });
 }

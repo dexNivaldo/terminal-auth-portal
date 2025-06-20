@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createAuthEntry, deleteEntry, getAuthEntries } from "../services/auth-entries.service";
-import { AuthEntry, AuthEntryInput } from "../types/auth-entry";
+import { AuthEntry, AuthEntryInput, EntryRole } from "../types/auth-entry";
 import { authTerminal } from "../services/auth.service";
 import { AuthResponse } from "../types/auth";
 import useAsyncList from "./use-async-list";
@@ -10,6 +10,7 @@ import { Terminal } from "../types/terminal";
 export default function useAuthEntry() {
     const [patente, setPatente] = useState('');
     const [terminal, setTerminal] = useState<number | null>(null);
+    const [role, setRole] = useState<EntryRole>('AA');
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -24,7 +25,11 @@ export default function useAuthEntry() {
             setIsLoading(true)
             setResult(null)
             const selectedTerminal = terminals.find(t => t.id === terminal)
-            const response = await authTerminal(authEntry?.terminal?.code || selectedTerminal?.code || '', authEntry?.patente || patente, authEntry)
+            const response = await authTerminal(
+                authEntry?.terminal?.code || selectedTerminal?.code || '',
+                authEntry?.patente || patente,
+                authEntry?.role || role
+            )
 
             const data = await response.json();
 
@@ -45,14 +50,12 @@ export default function useAuthEntry() {
     }
 
     const handleSave = async () => {
-        const settings = JSON.parse(localStorage.getItem('settings') || '{}')
-        if (!patente || !terminal) return;
+        if (!patente || !terminal || !role) return;
 
         const newEntry: Partial<AuthEntryInput> = {
             patente,
             terminal,
-            isProd: settings.isProd || false,
-            role: settings.role || 'AA'
+            role,
         };
 
         try {
@@ -98,6 +101,7 @@ export default function useAuthEntry() {
     const handleTagClick = (entry: AuthEntry) => {
         setPatente(entry.patente);
         setTerminal(entry.terminal.id);
+        setRole(entry.role);
         authenticate(entry);
     };
 
@@ -127,6 +131,8 @@ export default function useAuthEntry() {
         setTerminal,
         patente,
         setPatente,
+        role,
+        setRole,
         terminals,
         savedEntries,
         copyToClipboard,

@@ -9,17 +9,10 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Settings, Shield, Server, Lock } from 'lucide-react';
+import { Settings, Server, Lock } from 'lucide-react';
 import useAsync from '@/hooks/use-async';
 import { getUser } from '@/services/auth.service';
 import { AuthTokenSetting } from '@/types/setting';
@@ -103,48 +96,6 @@ export function AuthSettingsDrawer() {
                     }
                     className="data-[state=checked]:bg-emerald-500 data-[state=unchecked]:bg-zinc-700"
                   />
-                </div>
-
-                <div className="space-y-3 p-4 rounded-lg bg-zinc-800/30 border border-zinc-700/50">
-                  <Label htmlFor="role" className="flex items-center gap-2 text-sm font-medium text-zinc-200">
-                    <div className="p-1 rounded bg-blue-500/10 border border-blue-500/20">
-                      <Shield className="h-4 w-4 text-blue-400" />
-                    </div>
-                    Role
-                  </Label>
-                  <Select
-                    value={settings.role}
-                    onValueChange={(value: 'AA' | 'CARRIER') =>
-                      setSettings({ ...settings, role: value })
-                    }
-                  >
-                    <SelectTrigger
-                      id="role"
-                      className="w-full bg-zinc-800 border-zinc-700 text-zinc-200 focus:ring-blue-500/20 focus:border-blue-500"
-                    >
-                      <SelectValue placeholder="Select a role" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-zinc-900 border-zinc-700">
-                      <SelectItem
-                        value="AA"
-                        className="text-zinc-200 focus:bg-zinc-800 focus:text-zinc-100"
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-red-400"></div>
-                          Agente Aduanal (AA)
-                        </div>
-                      </SelectItem>
-                      <SelectItem
-                        value="CARRIER"
-                        className="text-zinc-200 focus:bg-zinc-800 focus:text-zinc-100"
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                          Carrier
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </div>
             </CardContent>

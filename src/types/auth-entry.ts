@@ -1,3 +1,5 @@
+export type EntryRole = 'AA' | 'CARRIER'
+
 export interface AuthEntry {
   id: number;
   patente: string;
@@ -5,15 +7,13 @@ export interface AuthEntry {
     id: number
     code: string
   };
-  role: 'AA' | 'CARRIER'
-  isProd: boolean
+  role: EntryRole
 }
 
 export interface AuthEntryInput {
   patente: string;
   terminal: number;
-  role: 'AA' | 'CARRIER'
-  isProd: boolean
+  role: EntryRole
   user: string
 }
 
