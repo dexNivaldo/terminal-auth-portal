@@ -5,7 +5,7 @@ const TABLE = 'auth-entries'
 
 export const getAuthEntries = async () => {
     const query = supabase.from(TABLE)
-    .select<string, AuthEntry>('id,isProd,role,patente,terminal:terminals(id,code)')
+    .select<string, AuthEntry>('id,role,patente,terminal:terminals(id,code)')
     .order('created_at', { ascending: false })
 
     const { data: entries, error } = await query
