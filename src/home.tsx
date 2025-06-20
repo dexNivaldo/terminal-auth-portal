@@ -3,8 +3,11 @@ import Backgroud from './background';
 import EntryManager from './components/entry-manager';
 import { useLocalStorageChange } from './hooks/use-local-storage-listener';
 
+const loadSettings = () => {
+  return JSON.parse(localStorage.getItem('settings') || '{}').isProd ?? false
+}
 const App: FC = () => {
-  const [isProd, setIsProd] = useState<boolean>(false)
+  const [isProd, setIsProd] = useState<boolean>(loadSettings)
   useLocalStorageChange((_, value) => {
     const settings = JSON.parse(value || '{}')
     setIsProd(settings.isProd)
