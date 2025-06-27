@@ -6,11 +6,13 @@ import { AuthResponse } from "../types/auth";
 import useAsyncList from "./use-async-list";
 import { getTerminals } from "../services/terminal.service";
 import { Terminal } from "../types/terminal";
+import { useSearchParams } from "react-router";
 
 export default function useAuthEntry() {
-    const [patente, setPatente] = useState('');
-    const [terminal, setTerminal] = useState<number | null>(null);
-    const [role, setRole] = useState<EntryRole>('AA');
+    const [searchParams] = useSearchParams()
+    const [patente, setPatente] = useState(searchParams.get('patente') || '');
+    const [terminal, setTerminal] = useState<number | null>(searchParams.get('terminal') ? parseInt(searchParams.get('terminal') || '') : null);
+    const [role, setRole] = useState<EntryRole>((searchParams.get('role') as EntryRole) || 'AA');
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -80,6 +82,28 @@ export default function useAuthEntry() {
         }
     };
 
+    const handleShare = () => {
+    if (!patente || !terminal || !role) {
+      setError('Please fill in both patente and terminal to share');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+      return;
+    }
+
+    const currentUrl = window.location.origin + window.location.pathname;
+    const shareUrl = `${currentUrl}?patente=${encodeURIComponent(patente)}&terminal=${encodeURIComponent(terminal)}&role=${encodeURIComponent(role)}`;
+    
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setSuccess('Share URL copied to clipboard!');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
+    }).catch(() => {
+      setError('Failed to copy URL to clipboard');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+    });
+  };
+
     const handleDelete = async (id: number) => {
         try {
             await deleteEntry(id)
@@ -140,6 +164,7 @@ export default function useAuthEntry() {
         handleTagClick,
         handleDelete,
         handleSave,
+        handleShare,
         handleSubmit
     }
 }

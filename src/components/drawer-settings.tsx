@@ -48,7 +48,7 @@ export function AuthSettingsDrawer() {
         <Button
           variant="outline"
           size="lg"
-          className="gap-2 bg-zinc-900 border-zinc-700 text-zinc-100 hover:bg-zinc-800 hover:border-zinc-600 transition-all duration-200"
+          className="gap-2 glass-effect text-zinc-100"
         >
           <Settings className="h-4 w-4" />
           Settings

@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import useAuthEntry from '../hooks/use-auth-entry';
-import { AlertCircle, CheckCircle, Copy, Save, X } from 'lucide-react';
+import { AlertCircle, CheckCircle, Copy, Save, Share2, X } from 'lucide-react';
 import { AuthSettingsDrawer } from './drawer-settings';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -12,6 +12,7 @@ const EntryManager: FunctionComponent = () => {
     handleDelete,
     handleOpenLink,
     handleSave,
+    handleShare,
     handleTagClick,
     terminals,
     patente,
@@ -33,10 +34,10 @@ const EntryManager: FunctionComponent = () => {
   return (
     <>
       <AuthSettingsDrawer />
-      <div className="max-w-lg mx-auto">
-        <Card className="glass-effect">
+      <div className="flex justify-center">
+        <Card className="glass-effect max-w-lg w-[512px] mt-3">
           <CardHeader>
-            <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text">
+            <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
               Terminal Auth Portal
             </h2>
           </CardHeader>
@@ -69,7 +70,7 @@ const EntryManager: FunctionComponent = () => {
                   }
                 >
                   <SelectTrigger
-                    id="role"
+                    id="terminal"
                     className="w-full bg-slate-800/50 border-gray-700 h-12 text-zinc-200 focus:ring-blue-500/20 focus:border-blue-500"
                   >
                     <SelectValue placeholder="Select a terminal" />
@@ -110,7 +111,7 @@ const EntryManager: FunctionComponent = () => {
                       className="text-zinc-200 focus:bg-zinc-800 focus:text-zinc-100"
                     >
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-gray-300"></div>
                         Agente Aduanal (AA)
                       </div>
                     </SelectItem>
@@ -134,13 +135,22 @@ const EntryManager: FunctionComponent = () => {
                 >
                   Authenticate
                 </button>
+                <div className="w-[1px] border-l h-[44px] border-slate-100/20" />
                 <button
                   type="button"
                   onClick={handleSave}
-                  className="flex items-center justify-center py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-emerald-800 to-teal-900 hover:from-emerald-700 hover:to-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="flex items-center justify-center py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-800 to-sky-900 hover:from-cyan-700 hover:to-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <Save size={16} className="mr-2" />
                   Save
+                </button>
+                <button
+                  type="button"
+                  onClick={handleShare}
+                  className="flex items-center justify-center py-3 px-4 rounded-xl text-sm font-semibold text-white glass-effect hover:bg-black/20"
+                  title="Share"
+                >
+                  <Share2 size={16} />
                 </button>
               </div>
             </form>
@@ -157,7 +167,7 @@ const EntryManager: FunctionComponent = () => {
                     >
                       <span className="text-sm block text-gray-300">
                         {entry.patente} • {entry.terminal.code}
-                        <small className="line-clamp-1">
+                        <small className={`line-clamp-1 ${entry.role === 'AA' ? '' : 'text-blue-400'}`}>
                           {entry.role} Token
                         </small>
                       </span>
@@ -175,7 +185,10 @@ const EntryManager: FunctionComponent = () => {
                 </div>
               </div>
             )}
-
+          </CardContent>
+        </Card>
+        <Card className={`${(result || isLoading) ? 'w-[448px] opacity-100' : 'w-0 opacity-0'} glass-effect max-w-md transition-all duration-500 ease-in-out mt-3`}>
+          <CardContent>
             {(isLoading || loadingEntries) && (
 
               <div role="status" className="flex justify-center mt-3">
@@ -190,8 +203,7 @@ const EntryManager: FunctionComponent = () => {
 
             {result && (
               <>
-                <div className="w-full border-b border-gray-700 my-4" />
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 pt-7">
                   <div
                     className="group relative border-gray-700 border flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-3 py-1.5 rounded-lg cursor-pointer hover:bg-slate-700/50 transition-colors duration-200"
                     onClick={() => handleOpenLink(`http://localhost:3000/auth?token=${result.token}`)}
