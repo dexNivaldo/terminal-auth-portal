@@ -21,7 +21,7 @@ const Login: FunctionComponent = () => {
 
                 <div className="max-w-md mx-auto">
                     <div className="glass-effect rounded-2xl shadow-2xl p-8 space-y-4">
-                        <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text">
+                        <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
                             Terminal Auth Portal
                         </h2>
                         <button
