@@ -47,7 +47,6 @@ export function AuthSettingsDrawer() {
       <DrawerTrigger asChild>
         <Button
           variant="outline"
-          size="lg"
           className="gap-2 glass-effect text-zinc-100"
         >
           <Settings className="h-4 w-4" />

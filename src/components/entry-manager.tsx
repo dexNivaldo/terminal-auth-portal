@@ -35,10 +35,10 @@ const EntryManager: FunctionComponent = () => {
     <>
       <AuthSettingsDrawer />
       <div className="flex justify-center">
-        <Card className="glass-effect max-w-lg w-[512px] mt-3">
+        <Card className="glass-effect max-w-lg w-[512px]">
           <CardHeader>
-            <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
-              Terminal Auth Portal
+            <h2 className="text-5xl font-bold text-center mb-6 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
+              Hatch
             </h2>
           </CardHeader>
           <CardContent>
@@ -187,7 +187,7 @@ const EntryManager: FunctionComponent = () => {
             )}
           </CardContent>
         </Card>
-        <Card className={`${(result || isLoading) ? 'w-[448px] opacity-100' : 'w-0 opacity-0'} glass-effect max-w-md transition-all duration-500 ease-in-out mt-3`}>
+        <Card className={`${(result || isLoading) ? 'w-[448px] opacity-100' : 'w-0 opacity-0'} glass-effect max-w-md transition-all duration-500 ease-in-out`}>
           <CardContent>
             {(isLoading || loadingEntries) && (
 

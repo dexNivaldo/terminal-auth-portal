@@ -1,9 +1,15 @@
+import { EntryRole } from "@/types/auth-entry";
 import { supabase } from "./supabase";
 
 export async function getUser() {
   const { data: { user } } = await supabase.auth.getUser()
 
   return user
+}
+
+const userTypeMap: Record<EntryRole, string> = {
+  'AA': 'LINE',
+  'CARRIER': 'CARRIER'
 }
 
 export const authTerminal = async (terminal: string, patente: string, role: string) => {
@@ -19,25 +25,14 @@ export const authTerminal = async (terminal: string, patente: string, role: stri
     body: JSON.stringify({
       name: user?.user_metadata?.name,
       email: user?.email,
-      patents: [
-        {
-          "type": "BROKER",
-          "value": "1669"
-        },
-        {
-          "type": "BROKER",
-          "value": "0500"
-        },
-        {
-          "type": "BROKER",
-          "value": "1333"
-        }
-      ],
+      app: 'TAS',
+      userType: userTypeMap[role as keyof typeof userTypeMap] || 'LINE',
+      patents: [],
       selection: patente,
       user: user?.email,
       key: settings.isProd ? import.meta.env.VITE_PROD_AUTH_KEY : import.meta.env.VITE_AUTH_KEY,
       terminalCode: terminal,
-      isCarrier: role === 'CARRIER'
+      carrierPatentId: ''
     }),
   });
 }
