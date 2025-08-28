@@ -1,4 +1,4 @@
-export type EntryRole = 'AA' | 'CARRIER'
+export type EntryRole = 'AA' | 'CARRIER' | 'BROKER'
 
 export interface AuthEntry {
   id: number;

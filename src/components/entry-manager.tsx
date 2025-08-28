@@ -124,6 +124,15 @@ const EntryManager: FunctionComponent = () => {
                         Carrier
                       </div>
                     </SelectItem>
+                    <SelectItem
+                      value="BROKER"
+                      className="text-zinc-200 focus:bg-zinc-800 focus:text-zinc-100"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-cyan-500"></div>
+                        Broker
+                      </div>
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -167,7 +176,7 @@ const EntryManager: FunctionComponent = () => {
                     >
                       <span className="text-sm block text-gray-300">
                         {entry.patente} • {entry.terminal.code}
-                        <small className={`line-clamp-1 ${entry.role === 'AA' ? '' : 'text-blue-400'}`}>
+                        <small className={`line-clamp-1 ${entry.role === 'AA' ? '' : entry.role === 'BROKER' ? 'text-cyan-500' : 'text-blue-400'}`}>
                           {entry.role} Token
                         </small>
                       </span>

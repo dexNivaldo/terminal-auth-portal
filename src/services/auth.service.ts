@@ -9,7 +9,8 @@ export async function getUser() {
 
 const userTypeMap: Record<EntryRole, string> = {
   'AA': 'LINE',
-  'CARRIER': 'CARRIER'
+  'CARRIER': 'CARRIER',
+  'BROKER': 'BROKER'
 }
 
 export const authTerminal = async (terminal: string, patente: string, role: string) => {
