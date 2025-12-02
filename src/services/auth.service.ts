@@ -13,7 +13,7 @@ const userTypeMap: Record<EntryRole, string> = {
   'BROKER': 'BROKER'
 }
 
-export const authTerminal = async (terminal: string, patente: string, role: string) => {
+export const authTerminal = async (terminal: string, patente: string, role: string, application: string) => {
   const user = await getUser()
   const settings = JSON.parse(localStorage.getItem('settings') || '{}')
 
@@ -26,7 +26,7 @@ export const authTerminal = async (terminal: string, patente: string, role: stri
     body: JSON.stringify({
       name: user?.user_metadata?.name,
       email: user?.email,
-      app: 'TAS',
+      app: application,
       userType: userTypeMap[role as keyof typeof userTypeMap] || 'LINE',
       patents: [],
       selection: patente,

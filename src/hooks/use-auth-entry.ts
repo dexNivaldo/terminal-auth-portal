@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createAuthEntry, deleteEntry, getAuthEntries } from "../services/auth-entries.service";
-import { AuthEntry, AuthEntryInput, EntryRole } from "../types/auth-entry";
+import { AuthEntry, AuthEntryInput, EntryRole, AuthApplication } from "../types/auth-entry";
 import { authTerminal } from "../services/auth.service";
 import { AuthResponse } from "../types/auth";
 import useAsyncList from "./use-async-list";
@@ -13,6 +13,7 @@ export default function useAuthEntry() {
     const [patente, setPatente] = useState(searchParams.get('patente') || '');
     const [terminal, setTerminal] = useState<number | null>(searchParams.get('terminal') ? parseInt(searchParams.get('terminal') || '') : null);
     const [role, setRole] = useState<EntryRole>((searchParams.get('role') as EntryRole) || 'AA');
+    const [application, setApplication] = useState<AuthApplication>((searchParams.get('application') as AuthApplication) || 'TAS');
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -30,7 +31,8 @@ export default function useAuthEntry() {
             const response = await authTerminal(
                 authEntry?.terminal?.code || selectedTerminal?.code || '',
                 authEntry?.patente || patente,
-                authEntry?.role || role
+                authEntry?.role || role,
+                authEntry?.application || application
             )
 
             const data = await response.json();
@@ -52,12 +54,13 @@ export default function useAuthEntry() {
     }
 
     const handleSave = async () => {
-        if (!patente || !terminal || !role) return;
+        if (!patente || !terminal || !role || !application) return;
 
         const newEntry: Partial<AuthEntryInput> = {
             patente,
             terminal,
             role,
+            application,
         };
 
         try {
@@ -82,27 +85,27 @@ export default function useAuthEntry() {
         }
     };
 
-    const handleShare = () => {
-    if (!patente || !terminal || !role) {
-      setError('Please fill in both patente and terminal to share');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
-      return;
-    }
+        const handleShare = () => {
+                if (!patente || !terminal || !role || !application) {
+                        setError('Please fill all fields to share');
+                        setShowToast(true);
+                        setTimeout(() => setShowToast(false), 3000);
+                        return;
+                }
 
-    const currentUrl = window.location.origin + window.location.pathname;
-    const shareUrl = `${currentUrl}?patente=${encodeURIComponent(patente)}&terminal=${encodeURIComponent(terminal)}&role=${encodeURIComponent(role)}`;
-    
-    navigator.clipboard.writeText(shareUrl).then(() => {
-      setSuccess('Share URL copied to clipboard!');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 2000);
-    }).catch(() => {
-      setError('Failed to copy URL to clipboard');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
-    });
-  };
+                const currentUrl = window.location.origin + window.location.pathname;
+                const shareUrl = `${currentUrl}?patente=${encodeURIComponent(patente)}&terminal=${encodeURIComponent(terminal)}&role=${encodeURIComponent(role)}&application=${encodeURIComponent(application)}`;
+
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                        setSuccess('Share URL copied to clipboard!');
+                        setShowToast(true);
+                        setTimeout(() => setShowToast(false), 2000);
+                }).catch(() => {
+                        setError('Failed to copy URL to clipboard');
+                        setShowToast(true);
+                        setTimeout(() => setShowToast(false), 3000);
+                });
+        };
 
     const handleDelete = async (id: number) => {
         try {
@@ -126,6 +129,7 @@ export default function useAuthEntry() {
         setPatente(entry.patente);
         setTerminal(entry.terminal.id);
         setRole(entry.role);
+        setApplication(entry.application);
         authenticate(entry);
     };
 
@@ -157,6 +161,8 @@ export default function useAuthEntry() {
         setPatente,
         role,
         setRole,
+        application,
+        setApplication,
         terminals,
         savedEntries,
         copyToClipboard,

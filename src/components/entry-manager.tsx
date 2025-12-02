@@ -4,7 +4,7 @@ import { AlertCircle, CheckCircle, Copy, Save, Share2, X } from 'lucide-react';
 import { AuthSettingsDrawer } from './drawer-settings';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { EntryRole } from '@/types/auth-entry';
+import { AuthApplication, EntryRole } from '@/types/auth-entry';
 
 const EntryManager: FunctionComponent = () => {
   const {
@@ -21,6 +21,8 @@ const EntryManager: FunctionComponent = () => {
     setRole,
     terminal,
     setTerminal,
+    application,
+    setApplication,
     savedEntries,
     isLoading,
     loadingEntries,
@@ -37,7 +39,7 @@ const EntryManager: FunctionComponent = () => {
       <div className="flex justify-center">
         <Card className="glass-effect max-w-lg w-[512px]">
           <CardHeader>
-            <h2 className="text-4xl font-bold text-center mb-6 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
+            <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
               Hatch
             </h2>
           </CardHeader>
@@ -57,6 +59,32 @@ const EntryManager: FunctionComponent = () => {
                   placeholder="Type a patente"
                   required
                 />
+              </div>
+
+              <div>
+                <label htmlFor="application" className="block text-sm font-medium text-gray-300">
+                  Application
+                </label>
+                  <Select
+                    value={application}
+                    onValueChange={(value) => setApplication(value as AuthApplication)}
+                    required
+                  >
+                  <SelectTrigger
+                    id="application"
+                    className="w-full bg-slate-800/50 border-gray-700 h-12 text-zinc-200 focus:ring-blue-500/20 focus:border-blue-500"
+                  >
+                    <SelectValue placeholder="Select an application" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-zinc-900 border-zinc-700">
+                    <SelectItem value="TAS" className="text-zinc-200 focus:bg-zinc-800 focus:text-zinc-100">
+                      TAS
+                    </SelectItem>
+                    <SelectItem value="DPE" className="text-zinc-200 focus:bg-zinc-800 focus:text-zinc-100">
+                      DPE
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div>
@@ -171,13 +199,13 @@ const EntryManager: FunctionComponent = () => {
                   {savedEntries.map((entry) => (
                     <div
                       key={entry.id}
-                      className="group text-nowrap relative border-gray-500 border flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-3 py-1.5 rounded-lg cursor-pointer hover:bg-slate-700/50 transition-colors duration-200"
+                      className="group text-nowrap relative border-gray-500 border flex justify-between items-start bg-slate-800/50 backdrop-blur-sm px-2 py-1.5 rounded-lg cursor-pointer hover:bg-slate-700/50 transition-colors duration-200"
                       onClick={() => handleTagClick(entry)}
                     >
                       <span className="text-sm block text-gray-300">
                         {entry.patente} • {entry.terminal.code}
                         <small className={`line-clamp-1 ${entry.role === 'AA' ? '' : entry.role === 'BROKER' ? 'text-cyan-500' : 'text-blue-400'}`}>
-                          {entry.role} Token
+                          {entry.role} Token • {entry.application}
                         </small>
                       </span>
                       <button
@@ -185,7 +213,7 @@ const EntryManager: FunctionComponent = () => {
                           e.stopPropagation();
                           handleDelete(entry.id);
                         }}
-                        className="text-gray-700 p-1 hover:text-red-400"
+                        className="text-gray-700 ml-2 mt-0.5 hover:text-red-400"
                       >
                         <X size={14} />
                       </button>
