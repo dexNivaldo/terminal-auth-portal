@@ -36,7 +36,7 @@ const EntryManager: FunctionComponent = () => {
   return (
     <>
       <AuthSettingsDrawer />
-      <div className="flex justify-center">
+      <div className="flex justify-center -m-9">
         <Card className="glass-effect max-w-lg w-[512px]">
           <CardHeader>
             <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-blue-200 to-purple-200 text-transparent bg-clip-text">
