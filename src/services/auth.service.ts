@@ -28,13 +28,13 @@ export const authTerminal = async (terminal: string, patente: string, role: stri
       name: user?.user_metadata?.name,
       email: 'dgomez@dexfreight.io', //  user?.email,
       app: application,
-      userType: userTypeMap[role as keyof typeof userTypeMap] || 'LINE',
+      userType: userTypeMap[role as keyof typeof userTypeMap] || userTypeMap.AA,
       patents: [],
       selection: patente,
       user: terminal === LCT ? '20000000000221' :'dgomez@dexfreight.io', //  user?.email,
       key: settings.isProd ? import.meta.env.VITE_PROD_AUTH_KEY : import.meta.env.VITE_AUTH_KEY,
       terminalCode: terminal,
-      carrierPatentId: ''
+      carrierPatentId: role === userTypeMap.CARRIER ? patente : '',
     }),
   });
 }
