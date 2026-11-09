@@ -72,7 +72,7 @@ export function TokenForm({
         onSubmit(event);
       }}
       noValidate
-      className="flex flex-col gap-5 rounded-xl border border-zinc-200 bg-white p-5 shadow-card"
+      className="flex flex-col gap-5 rounded-xl border border-zinc-200 bg-white p-5 shadow-card dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none"
     >
       <div className="space-y-1.5">
         <Label htmlFor="patente">Patente</Label>
@@ -88,11 +88,11 @@ export function TokenForm({
           aria-describedby={errors.patente ? 'patente-error' : 'patente-hint'}
         />
         {errors.patente ? (
-          <p id="patente-error" className="text-xs text-red-600">
+          <p id="patente-error" className="text-xs text-red-600 dark:text-red-400">
             {errors.patente}
           </p>
         ) : (
-          <p id="patente-hint" className="text-xs text-zinc-500">
+          <p id="patente-hint" className="text-xs text-zinc-500 dark:text-zinc-400">
             Customs patent or identifier.
           </p>
         )}
@@ -101,14 +101,14 @@ export function TokenForm({
       <div className="space-y-1.5">
         <span
           id="application-label"
-          className="text-sm font-medium leading-none text-zinc-800"
+          className="text-sm font-medium leading-none text-zinc-800 dark:text-zinc-200"
         >
           Application
         </span>
         <div
           role="group"
           aria-labelledby="application-label"
-          className="grid grid-cols-2 gap-1 rounded-lg border border-zinc-300 bg-zinc-100 p-1"
+          className="grid grid-cols-2 gap-1 rounded-lg border border-zinc-300 bg-zinc-100 p-1 dark:border-zinc-700 dark:bg-zinc-800"
         >
           {applications.map((value) => (
             <button
@@ -119,8 +119,8 @@ export function TokenForm({
               className={cn(
                 'h-8 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/40',
                 application === value
-                  ? 'bg-brand-700 text-white shadow-sm'
-                  : 'text-zinc-600 hover:text-zinc-900'
+                  ? 'bg-brand-700 text-white shadow-sm dark:bg-brand-600'
+                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100'
               )}
             >
               {value}
@@ -139,11 +139,11 @@ export function TokenForm({
             id="terminal"
             className={cn(
               errors.terminal &&
-                'border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20'
+                'border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20 dark:border-red-500 dark:focus-visible:border-red-500 dark:focus-visible:ring-red-500/20'
             )}
             aria-invalid={Boolean(errors.terminal)}
             aria-describedby={errors.terminal ? 'terminal-error' : undefined}
-            disabled={loadingTerminals || Boolean(terminalsError)}
+            disabled={loadingTerminals || terminalsError != null}
           >
             <SelectValue
               placeholder={
@@ -161,7 +161,7 @@ export function TokenForm({
           </SelectContent>
         </Select>
         {errors.terminal && (
-          <p id="terminal-error" className="text-xs text-red-600">
+          <p id="terminal-error" className="text-xs text-red-600 dark:text-red-400">
             {errors.terminal}
           </p>
         )}
@@ -232,7 +232,7 @@ export function TokenForm({
       </div>
 
       {!terminalsError && terminals.length === 0 && !loadingTerminals && (
-        <p className="flex items-center gap-1.5 text-xs text-zinc-500">
+        <p className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
           <AlertCircle className="size-3.5" />
           No terminals are available. Check your connection and try again.
         </p>

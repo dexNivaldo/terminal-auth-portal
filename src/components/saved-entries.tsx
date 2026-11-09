@@ -70,27 +70,27 @@ export function SavedEntries({
 }: SavedEntriesProps) {
   return (
     <section aria-labelledby="saved-entries-heading" className="mt-8">
-      <div className="sticky top-14 z-20 border-b border-zinc-200 bg-zinc-50 pb-3">
+      <div className="sticky top-14 z-20 border-b border-zinc-200 bg-zinc-50 pb-3 dark:border-zinc-800 dark:bg-zinc-950">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
             <h2
               id="saved-entries-heading"
-              className="text-base font-semibold tracking-tight text-zinc-900"
+              className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
             >
               Saved entries
             </h2>
-            <p className="mt-0.5 hidden text-sm text-zinc-500 sm:block">
+            <p className="mt-0.5 hidden text-sm text-zinc-500 dark:text-zinc-400 sm:block">
               Reuse a configuration to generate a token in one click.
             </p>
           </div>
-          <span className="text-sm text-zinc-500">
+          <span className="text-sm text-zinc-500 dark:text-zinc-400">
             {filteredEntries.length} of {entries.length}
           </span>
         </div>
 
         <div className="mt-3 flex flex-col gap-2 lg:flex-row lg:items-center">
           <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-zinc-500" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-zinc-500 dark:text-zinc-400" />
             <Input
               value={search}
               onChange={(event) => onSearchChange(event.target.value)}
@@ -104,7 +104,7 @@ export function SavedEntries({
             <div
               role="group"
               aria-label="Filter by role"
-              className="flex rounded-lg border border-zinc-300 bg-white p-0.5"
+              className="flex rounded-lg border border-zinc-300 bg-white p-0.5 dark:border-zinc-700 dark:bg-zinc-900"
             >
               {roleFilters.map((option) => (
                 <button
@@ -115,8 +115,8 @@ export function SavedEntries({
                   className={cn(
                     'h-7 rounded-md px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/40',
                     roleFilter === option.value
-                      ? 'bg-zinc-900 text-white'
-                      : 'text-zinc-600 hover:text-zinc-900'
+                      ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
+                      : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100'
                   )}
                 >
                   {option.label}
@@ -158,34 +158,34 @@ export function SavedEntries({
             </div>
           </Alert>
         ) : filteredEntries.length === 0 ? (
-          <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-300 bg-white px-6 py-10 text-center">
-            <div className="rounded-full bg-zinc-100 p-3">
-              <Bookmark className="size-5 text-zinc-500" />
+          <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-300 bg-white px-6 py-10 text-center dark:border-zinc-700 dark:bg-zinc-900">
+            <div className="rounded-full bg-zinc-100 p-3 dark:bg-zinc-800">
+              <Bookmark className="size-5 text-zinc-500 dark:text-zinc-400" />
             </div>
-            <p className="text-sm font-medium text-zinc-700">
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
               {entries.length === 0 ? 'No saved entries yet' : 'No matching entries'}
             </p>
-            <p className="max-w-sm text-xs text-zinc-500">
+            <p className="max-w-sm text-xs text-zinc-500 dark:text-zinc-400">
               {entries.length === 0
                 ? 'Save a configuration from the form to reuse it later.'
                 : 'Try a different search term or clear the filters.'}
             </p>
           </div>
         ) : (
-          <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white">
+          <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-900">
             {filteredEntries.map((entry) => (
               <li
                 key={entry.id}
-                className="relative flex cursor-pointer flex-col gap-3 p-4 transition-colors hover:bg-zinc-50 sm:flex-row sm:items-center"
+                className="relative flex cursor-pointer flex-col gap-3 p-4 transition-colors hover:bg-zinc-50 sm:flex-row sm:items-center dark:hover:bg-zinc-800/60"
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-sm font-semibold text-zinc-900">
+                    <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                       {entry.patente}
                     </span>
                     <Badge variant="neutral">{entry.terminal?.code}</Badge>
                   </div>
-                  <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-500">
+                  <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
                     <Badge variant="neutral">{roleLabels[entry.role]}</Badge>
                     <Badge variant="brand">{entry.application}</Badge>
                     {entry.created_at && (
@@ -247,7 +247,7 @@ export function SavedEntries({
 function EntriesSkeleton() {
   return (
     <div aria-busy="true" aria-label="Loading saved entries">
-      <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white">
+      <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-900">
         {[0, 1, 2].map((item) => (
           <li key={item} className="flex items-center justify-between p-4">
             <div className="flex w-full flex-col gap-2 pr-4">

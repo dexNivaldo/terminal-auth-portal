@@ -13,9 +13,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         type={type}
         aria-invalid={invalid || undefined}
         className={cn(
-          'flex h-10 w-full rounded-lg border border-zinc-300 bg-white px-3 text-sm text-zinc-900 shadow-sm transition-colors placeholder:text-zinc-500 focus-visible:border-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 disabled:cursor-not-allowed disabled:opacity-50',
+          'flex h-10 w-full rounded-lg border border-zinc-300 bg-white px-3 text-sm text-zinc-900 shadow-sm transition-colors placeholder:text-zinc-500 focus-visible:border-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500',
           invalid &&
-            'border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20',
+            'border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20 dark:border-red-500 dark:focus-visible:border-red-500 dark:focus-visible:ring-red-500/20',
           className
         )}
         ref={ref}

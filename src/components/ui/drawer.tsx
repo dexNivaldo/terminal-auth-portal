@@ -45,20 +45,20 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed z-50 flex flex-col bg-white shadow-pop',
+        'fixed z-50 flex flex-col bg-white shadow-pop dark:bg-zinc-900',
         direction === 'bottom' &&
-          'inset-x-0 bottom-0 max-h-[92vh] rounded-t-xl border-x border-t border-zinc-200',
+          'inset-x-0 bottom-0 max-h-[92vh] rounded-t-xl border-x border-t border-zinc-200 dark:border-zinc-800',
         direction === 'right' &&
-          'inset-y-0 right-0 h-full w-full max-w-md rounded-l-xl border-y border-r border-zinc-200',
+          'inset-y-0 right-0 h-full w-full max-w-md rounded-l-xl border-y border-r border-zinc-200 dark:border-zinc-800',
         className
       )}
       {...props}
     >
       {direction === 'bottom' && (
-        <div className="mx-auto mt-3 h-1.5 w-10 shrink-0 rounded-full bg-zinc-300" />
+        <div className="mx-auto mt-3 h-1.5 w-10 shrink-0 rounded-full bg-zinc-300 dark:bg-zinc-700" />
       )}
       {direction === 'right' && (
-        <div className="absolute left-2.5 top-1/2 h-10 w-1.5 -translate-y-1/2 rounded-full bg-zinc-300" />
+        <div className="absolute left-2.5 top-1/2 h-10 w-1.5 -translate-y-1/2 rounded-full bg-zinc-300 dark:bg-zinc-700" />
       )}
       {children}
     </DrawerPrimitive.Content>
@@ -71,7 +71,10 @@ const DrawerHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('grid gap-1.5 border-b border-zinc-200 p-5', className)}
+    className={cn(
+      'grid gap-1.5 border-b border-zinc-200 p-5 dark:border-zinc-800',
+      className
+    )}
     {...props}
   />
 );
@@ -106,7 +109,7 @@ const DrawerDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}
-    className={cn('text-sm text-zinc-500', className)}
+    className={cn('text-sm text-zinc-500 dark:text-zinc-400', className)}
     {...props}
   />
 ));

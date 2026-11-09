@@ -1,107 +1,119 @@
 {
   "schemaVersion": "uizze.visual-evidence.v1",
-  "scope": "Hatch full redesign — login and home surfaces, light theme, anti-slop system, brand accent #E5173A, sticky saved-entries filters. Verified with a labeled development preview harness (illustrative fixtures) plus the real login route.",
+  "scope": "Hatch full redesign — login and home surfaces, light and dark themes, anti-slop system, brand accent #E5173A, sticky saved-entries filters. Verified with a labeled development preview harness (illustrative fixtures) plus the real login route.",
   "platform": "web",
   "sources": [
     {
       "path": "../src/index.css",
-      "sha256": "b532c87188ba801447584d1649038cfaba33f1770a5e3348484c1b75557c1d21"
+      "sha256": "f7e1eba67830f15306504f9da7cd916566d131c2f2c390d9cb3a5fc52c67b016"
     },
     {
       "path": "../tailwind.config.js",
-      "sha256": "480a5995f0e839cb7fa6ddeea23d5744694a10832da969f3c460b2a320d60951"
+      "sha256": "c1fd6de078fe1f64cfde6c985c1c52e513220a602e7e8554dd8741c0cdff488d"
     },
     {
       "path": "../index.html",
-      "sha256": "8d0a9994668b4c4af60bdab044e31a6b1cce9efb78b78ad07edd75f93a2de269"
+      "sha256": "5fe5da4c12c10f8fb1d1e875fe4105f50084fe07ec03da38b522a04c64970254"
     },
     {
       "path": "../public/favicon.svg",
-      "sha256": "1c71e5976b1be73fb0f10e009e78a79b234eb09dec218ff39d34d64a37dc42dd"
+      "sha256": "2cbad0d52670087730343ff3617688d0768309fb2833eb66c5fa12e706f129cd"
     },
     {
       "path": "../public/logo.svg",
       "sha256": "207dcf0af0b8c38eb04a1abe2e2eb12c7120981f48d5abddaf78058629a6b492"
     },
     {
+      "path": "../src/main.tsx",
+      "sha256": "bff26738ce4043d1db88ff5570b660b5448556f4c83a38be04ee807bdd7e832a"
+    },
+    {
       "path": "../src/home.tsx",
-      "sha256": "ffe540cb6366b0f22e670d0cbeecaf1489de41ccb551a5cc63a5fc514a4500d2"
+      "sha256": "4dcdad47d502847cd78d0c0c93f92156bb226864955a841188a785fa1ae83df9"
     },
     {
       "path": "../src/login.tsx",
-      "sha256": "bd240864c615267cefde8949a0f1c9e84a1390e826e925da75919ab5e7bf55b5"
+      "sha256": "5e00340e15646285bd3dc3444fb122d19eac2800efc6f7aa7c61a7937ea881ec"
     },
     {
       "path": "../src/components/app-header.tsx",
-      "sha256": "28f4e42c8422709a9d82f771eba27000d15217e0c907d5c9e1c580739e865186"
+      "sha256": "12f95d586435d229609216a735aaba40d57aa5b143adc3c0c9ef0dc039b41522"
+    },
+    {
+      "path": "../src/components/theme-toggle.tsx",
+      "sha256": "7e51081a6cf7ae4a07947f23ab15607ac6d5079567ebd1236ce23bc992b40ee4"
     },
     {
       "path": "../src/components/settings-sheet.tsx",
-      "sha256": "71094fff541a5d69f61f4680f3d1b241256314c832fb307c0511d7b7112e7790"
+      "sha256": "054e80fbeaf2138cc4bec2cb6659ad330351e1de748f5fe1a26dd0c14f26b9a0"
     },
     {
       "path": "../src/components/token-form.tsx",
-      "sha256": "01da2203f22777e5a055db4905bddf96ed000bf0dab6eb60a54c0a55c261d8a8"
+      "sha256": "79f3323f783ae5530a978adc8c7302c9a479751b4fbb8bb05b75e4d1fc73bb9c"
     },
     {
       "path": "../src/components/token-result.tsx",
-      "sha256": "f32f680879ae124f762b997256743519cb5f22bbae9ba686819f93a63e06c341"
+      "sha256": "4682e4810573dd1ffe9f941c04d671534c5c8cdfcde7eaf7a9aad233862c8be8"
     },
     {
       "path": "../src/components/saved-entries.tsx",
-      "sha256": "015d694acd3bfbeeec3913cf3142c03b4b6ec5af6214c57c05b07c1fd8ac0b2a"
+      "sha256": "8d1ff89d74052ef7df1c5327362556b4d41be2f1167a8a770e846bfafe260cf8"
     },
     {
       "path": "../src/components/toast.tsx",
-      "sha256": "ca5648dbcc3787f8dea1c628d95a18f254a86d1072682bd0f077af939d1cd3e9"
+      "sha256": "f2409351e90922e168c2563c9da812b469d67b03c0f01fa0bc228cce1fbe4bb7"
     },
     {
       "path": "../src/components/ui/button.tsx",
-      "sha256": "e022abad960e966c6ea4e4edb91e7c17074a941add928b39fc1cff90e49e7e7b"
+      "sha256": "1f37f103ecabc8ecc5eb1eb5435e50877596770cc74c6bc7859907b6284d60b4"
     },
     {
       "path": "../src/components/ui/card.tsx",
-      "sha256": "012afe17fe103332765e72818343426bac30c451f4124d3a0b8e2b6e8001a1b7"
+      "sha256": "4a966be4ee1a891c9081cbcebcc921ad46d16e6e79da86262a558bdc13a2260b"
     },
     {
       "path": "../src/components/ui/input.tsx",
-      "sha256": "1b3263f2c4dc207ae591333f118698511bb1caa32dc017bbae2eaf78aba22d8f"
+      "sha256": "5eba2b56618e091fd369e8d2c83f3a4be0afcf4149634b8652d8c8d160af6eb2"
     },
     {
       "path": "../src/components/ui/badge.tsx",
-      "sha256": "98c457abcf06f0843f69a5d9f809d9da91015122a535bc3e8c9fa25ae15ed99d"
+      "sha256": "474114e8dfca73c55c57582d980e925f3852e8d387797eb1e968d9e25475760c"
     },
     {
       "path": "../src/components/ui/skeleton.tsx",
-      "sha256": "a076a712c53159f45749a92e57c376ab664e50a032050215bbcb7d39b9ba6809"
+      "sha256": "52a36549936dc81ffc7d9a5416fb37d597dc76b34bf0d326bcc16f12468719e6"
     },
     {
       "path": "../src/components/ui/alert.tsx",
-      "sha256": "706bd0e3590a94d0173fb48a68c107092710d9a4a7a9c8e1ba9645758e95792e"
+      "sha256": "65250248674c2197fba39e7f46689d76b6f086edf1f75cc87847e0dc00eedd83"
     },
     {
       "path": "../src/components/ui/select.tsx",
-      "sha256": "0928537cf3431e81bc4ecc084a15d8a2f8dd0d0edaa26e1f663f4dcd156ad1f0"
+      "sha256": "10515deab1dc564dccecb71d0827a31604e7b455e14039430974e1593b012775"
     },
     {
       "path": "../src/components/ui/switch.tsx",
-      "sha256": "86925295e9bc874113d4a10e380a6a24c1c2561027fb055d7b8c465d41ebbc6a"
+      "sha256": "bb546e6a2a488826c9a39d04ca18c7ec64b2d2d7f3f71d0131c1433bd299122f"
     },
     {
       "path": "../src/components/ui/drawer.tsx",
-      "sha256": "c67d5d13580717abfab5017f8d8a367929ab86d01062f05c3efb23654e2dde5d"
+      "sha256": "bef9082089f4cb9c5caa16ac3251b910fa461c3aa425b098907495713dc7c676"
     },
     {
       "path": "../src/components/ui/separator.tsx",
-      "sha256": "2b45773ebe7c722aed0a11b450509de8aeffb551b36a50b8945e0d8e2202cdaa"
+      "sha256": "2173653d55118ac12e620e37e6afa587e61d49b2f5df31c9ff3433926af0e99c"
     },
     {
       "path": "../src/components/ui/label.tsx",
-      "sha256": "c98ae21b06915b1b6f3d3755e266d983fcf259f347fa9d881f045779f2155ceb"
+      "sha256": "a94f58643182ec9245ac95d791438b251079f2d4bb7122c1c1f7fa22023754d6"
     },
     {
       "path": "../src/hooks/use-auth-entry.ts",
       "sha256": "5ccb0914f772315c370c36407fb32ff3c28d52c8e2dc7d613d858aee9f47883d"
+    },
+    {
+      "path": "../src/hooks/use-theme.tsx",
+      "sha256": "59228c57ac7b331cde64934376d2859926c543061a7d1b251fa03d81fb46e650"
     },
     {
       "path": "../src/hooks/use-toast.ts",
@@ -149,11 +161,11 @@
     },
     {
       "path": "../src/preview.tsx",
-      "sha256": "f663d30dddd088d9e83e12e46368ca070de97c29ce0f1918ba070aa969f162dd"
+      "sha256": "2ea29d19c686825720462be9b465077c0bbf59f51c3b5d62d749b57281a386bb"
     },
     {
       "path": "../design/direction.md",
-      "sha256": "f7ef81be0f1c6b7f12e36f41f1dc5e8b9e3c43b36cd559263a63e2ee19f02501"
+      "sha256": "ac8a952f59c8dc6de702b86b079b6f9454afaface428a30fdd26e65d334f7ff5"
     }
   ],
   "comparison": "existing-system",
@@ -209,6 +221,38 @@
     {
       "id": "keyboard-focus-primary",
       "kind": "interaction"
+    },
+    {
+      "id": "login-dark-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-dark-success-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-dark-success-mobile",
+      "kind": "visual"
+    },
+    {
+      "id": "home-dark-error-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-dark-settings-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-dark-delete-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-dark-sticky-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "theme-toggle-interaction",
+      "kind": "interaction"
     }
   ],
   "checks": [
@@ -227,7 +271,7 @@
         {
           "path": "captures/login-desktop.png",
           "kind": "image",
-          "sha256": "d963c797817fb97044c9f14ea47407b59417f184480ae92e122498dba0bcfc24"
+          "sha256": "e759c9668bee3d5d016dad30cab40abec78d8bcacae7710f11840eca58a6188e"
         }
       ]
     },
@@ -246,7 +290,7 @@
         {
           "path": "captures/preview-success-desktop.png",
           "kind": "image",
-          "sha256": "bdcd6d1a8e69931d559c2bef2ddf44d60c9a9bb02a1e7ab05a4e7477521ca702"
+          "sha256": "06082a594701d660f3cbb3a47737ebd2856ab424d8552fb69b08e6beaf9c7cdf"
         }
       ]
     },
@@ -265,7 +309,7 @@
         {
           "path": "captures/preview-success-mobile.png",
           "kind": "image",
-          "sha256": "16874d48b3164dab719799f6a6bfc601797222adb7ed243ab2d8e81d2dcc583c"
+          "sha256": "d9ac8fc72f0a8143bc44a91fe6e66bc4887a01422cf1e8ba4ba2a4a22fc98593"
         }
       ]
     },
@@ -284,7 +328,7 @@
         {
           "path": "captures/preview-success-tablet.png",
           "kind": "image",
-          "sha256": "f738ddd05da51d8ed2a7dd858c57b0093caf277d9d350501f107c90c679b802e"
+          "sha256": "e0c41fe0423e1e3f9d338aa37e0b9ae5d8039255cecc6a088ff7282af5f2b389"
         }
       ]
     },
@@ -303,7 +347,7 @@
         {
           "path": "captures/preview-loading-desktop.png",
           "kind": "image",
-          "sha256": "c0e3b4e7b1265affd187f60ceec6bb8325d8a74c412c9390911af3160c2ece9a"
+          "sha256": "28fb990603f8db3753f7721876628598786f0c361a510db096469ae80ea348c2"
         }
       ]
     },
@@ -322,7 +366,7 @@
         {
           "path": "captures/preview-error-desktop.png",
           "kind": "image",
-          "sha256": "57de14ae8ac9b05f13eada827c6e075c387564c76730ab13d9861bef3fbde2ca"
+          "sha256": "a281ff1929a314368458a776b1ca08f937bbf5a3deb1188fa8924c44f2e6a9ad"
         }
       ]
     },
@@ -341,7 +385,7 @@
         {
           "path": "captures/preview-empty-entries-desktop.png",
           "kind": "image",
-          "sha256": "f5b07619d5862971e393eb7295305db5ca4cdc2a4dd440c4ba61e0e60b9750c2"
+          "sha256": "f89645dc010ef55180ecab757eba57168be2203d6e24789ae2e0443a1e52ecbb"
         }
       ]
     },
@@ -360,7 +404,7 @@
         {
           "path": "captures/preview-settings-desktop.png",
           "kind": "image",
-          "sha256": "18ce0ed05ccb6b071a554b51643ca31cba3a3f090df65e4c7a9fded9f1507a09"
+          "sha256": "8481ee343724808f8ee98c48c2e98d24f897fc5984362e2bfb7fc443abbbaeb5"
         }
       ]
     },
@@ -379,7 +423,7 @@
         {
           "path": "captures/preview-delete-confirm-desktop.png",
           "kind": "image",
-          "sha256": "5cd520c850392721af53f94d1dcf0632a19adf6751f56e0e51cee4fa4fc51ab0"
+          "sha256": "a436c64b0903e81b027c733ca6c3ce930cc3e0d8577b0215fa674d57f674e89f"
         }
       ]
     },
@@ -398,7 +442,7 @@
         {
           "path": "captures/preview-sticky-desktop.png",
           "kind": "image",
-          "sha256": "0275216c3df72a7c50769ddcb087c55b9a9262c2b0ca5ed2de6325530d6bf2c0"
+          "sha256": "50a7102d6054f951a7664088265ab865ea5349d692095be55d2ae0b568230a0f"
         }
       ]
     },
@@ -417,7 +461,7 @@
         {
           "path": "captures/preview-sticky-mobile.png",
           "kind": "image",
-          "sha256": "3bd49b22c9233c668ef43d37029abeb44a976fdfe150bc0d9fc60e5cea805a22"
+          "sha256": "630c04ea7c01e3764b5bb3d73b3137dcc4fa85a0bf4c7c715d9421e193c14fcd"
         }
       ]
     },
@@ -443,7 +487,7 @@
         {
           "path": "captures/preview-row-hover.png",
           "kind": "image",
-          "sha256": "aec09a28c887e29778d655c52ac31b8e970daeebcc2f9352e7da0de444b8ade6"
+          "sha256": "3a95cef3f04ae0bce5aedcc5f7c406f4a11b37370ccca690d00dec90401b465a"
         }
       ]
     },
@@ -460,7 +504,7 @@
       "observed": "After dispatching 8 Tab key events, document.activeElement is the \"Generate token\" button and matches(\":focus-visible\") is true. The teal button shows a white focus ring with a teal offset, clearly visible against the fill.",
       "steps": [
         "Navigated to the preview route.",
-        "Dispatched 8 Tab key events through CDP Input.dispatchKeyEvent.",
+        "Dispatched 9 Tab key events through CDP Input.dispatchKeyEvent.",
         "Confirmed document.activeElement is the \"Generate token\" button and matches(\":focus-visible\") is true.",
         "Captured the focused state."
       ],
@@ -468,7 +512,165 @@
         {
           "path": "captures/preview-focus-tab-button.png",
           "kind": "image",
-          "sha256": "20f4af2e9d7be29256281af9c999412a2acb1ee39947515da49ead4cd4d1151f"
+          "sha256": "febf54fae3e4f826dc9fdea73a0db0cf5cd1bbcbccd47a0be5227daf1f69cb8a"
+        }
+      ]
+    },
+    {
+      "id": "login-dark-desktop",
+      "status": "pass",
+      "state": "Signed out, centered login card in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Dark zinc-950 ground, zinc-900 card with a zinc-800 border, brand mark with its subtle inner border, \"Sign in\" heading, red \"Continue with Google\" CTA and a theme toggle in the top right. No gradients or glow.",
+      "artifacts": [
+        {
+          "path": "captures/login-dark-desktop.png",
+          "kind": "image",
+          "sha256": "e70ba6ece874f63a1ff9750aa78019b64b2da44b0e748d8ba30eb5f460fc0226"
+        }
+      ]
+    },
+    {
+      "id": "home-dark-success-desktop",
+      "status": "pass",
+      "state": "Token generated successfully in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Two-column workspace on a zinc-950 ground with zinc-900 cards and zinc-800 borders. One grey family (zinc) and one accent (#E5173A); Token, Local portal and Redirect URL remain readable and the theme toggle shows the Sun icon.",
+      "artifacts": [
+        {
+          "path": "captures/preview-dark-success-desktop.png",
+          "kind": "image",
+          "sha256": "cf453aadf8eee089222c76474c2e89bb999b4c44a9d2110f8943daa9e63e67d7"
+        }
+      ]
+    },
+    {
+      "id": "home-dark-success-mobile",
+      "status": "pass",
+      "state": "Token generated successfully at a phone width in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 390,
+        "height": 844
+      },
+      "observed": "Single column stacks cleanly on a 390x844 dark viewport with no horizontal overflow; the header fits the brand, Development badge, theme toggle and avatar.",
+      "artifacts": [
+        {
+          "path": "captures/preview-dark-success-mobile.png",
+          "kind": "image",
+          "sha256": "6795b26bad28afa07837ad90a06abce404625e011a14a69474cf215603a5573d"
+        }
+      ]
+    },
+    {
+      "id": "home-dark-error-desktop",
+      "status": "pass",
+      "state": "Token request failed in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Inline error alert uses a dark red surface and red-200 text with a \"Try again\" action, readable against the dark card.",
+      "artifacts": [
+        {
+          "path": "captures/preview-dark-error-desktop.png",
+          "kind": "image",
+          "sha256": "f003e4d8ef80849e4b3acd8a3ae1087921773b66f6545977c665f18d7d8c28ee"
+        }
+      ]
+    },
+    {
+      "id": "home-dark-settings-desktop",
+      "status": "pass",
+      "state": "Settings panel open in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Right-side panel renders on a zinc-900 surface with zinc-800 dividers, environment toggle and account card.",
+      "artifacts": [
+        {
+          "path": "captures/preview-dark-settings-desktop.png",
+          "kind": "image",
+          "sha256": "240129574a0df7e3069734c39eb31e9cf6660302aa7ba155bf12b8c9311f970e"
+        }
+      ]
+    },
+    {
+      "id": "home-dark-delete-desktop",
+      "status": "pass",
+      "state": "Saved entry delete confirmation open in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "The destructive \"Delete\" button uses a subtle dark-red outline style, distinct from the solid brand-red primary button.",
+      "artifacts": [
+        {
+          "path": "captures/preview-dark-delete-desktop.png",
+          "kind": "image",
+          "sha256": "d94b46eb5cc2d36bcab19aebea8fdb9aead7fb1e7e0d835999ea1e123581db34"
+        }
+      ]
+    },
+    {
+      "id": "home-dark-sticky-desktop",
+      "status": "pass",
+      "state": "Page scrolled to y=650 in dark mode",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "The \"Saved entries\" heading and filters stick below the dark header with an opaque zinc-950 background and a bottom border.",
+      "artifacts": [
+        {
+          "path": "captures/preview-dark-sticky-desktop.png",
+          "kind": "image",
+          "sha256": "fa55c9b88317b910e4517b01edf4a15f3cf38b5a90dda1e24f45d1cbbfe87aa1"
+        }
+      ]
+    },
+    {
+      "id": "theme-toggle-interaction",
+      "status": "pass",
+      "state": "Header theme toggle clicked from light to dark",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Clicking the header theme toggle adds the \"dark\" class to documentElement, saves \"dark\" to localStorage, updates the button aria-label from \"Switch to dark mode\" to \"Switch to light mode\" and re-themes the entire surface without a reload.",
+      "steps": [
+        "Opened the preview in light mode (darkClass: false, stored: \"light\").",
+        "Dispatched a mouse click on the header theme toggle button.",
+        "Verified documentElement.classList.contains(\"dark\") is true, localStorage.getItem(\"theme\") is \"dark\", and the button aria-label changed to \"Switch to light mode\".",
+        "Captured the resulting dark surface."
+      ],
+      "artifacts": [
+        {
+          "path": "captures/preview-theme-toggled-to-dark.png",
+          "kind": "image",
+          "sha256": "9cccfa4d6c7ea23c3966d00913344e869bc267f16778a63073f31e4e864bc01a"
         }
       ]
     }

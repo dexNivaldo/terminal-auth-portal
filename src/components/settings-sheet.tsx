@@ -72,20 +72,20 @@ export function SettingsSheet({
           <section aria-labelledby="env-heading">
             <h3
               id="env-heading"
-              className="text-xs font-medium uppercase tracking-wide text-zinc-500"
+              className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400"
             >
               Environment
             </h3>
-            <div className="mt-2 flex items-center justify-between gap-3 rounded-lg border border-zinc-200 p-3">
+            <div className="mt-2 flex items-center justify-between gap-3 rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
               <div className="flex items-start gap-3">
-                <div className="rounded-md bg-brand-50 p-2">
-                  <Server className="size-4 text-brand-700" />
+                <div className="rounded-md bg-brand-50 p-2 dark:bg-brand-950">
+                  <Server className="size-4 text-brand-700 dark:text-brand-300" />
                 </div>
                 <div>
                   <Label htmlFor="isProd" className="text-sm">
                     Production environment
                   </Label>
-                  <p className="mt-0.5 text-xs text-zinc-500">
+                  <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
                     Use the production API. Changes affect live systems.
                   </p>
                 </div>
@@ -109,29 +109,31 @@ export function SettingsSheet({
           <section aria-labelledby="account-heading">
             <h3
               id="account-heading"
-              className="text-xs font-medium uppercase tracking-wide text-zinc-500"
+              className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400"
             >
               Account
             </h3>
-            <div className="mt-2 flex items-center gap-3 rounded-lg border border-zinc-200 p-3">
+            <div className="mt-2 flex items-center gap-3 rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
               {userPicture ? (
                 <img
                   src={userPicture}
                   alt=""
                   referrerPolicy="no-referrer"
-                  className="size-9 rounded-full border border-zinc-200 object-cover"
+                  className="size-9 rounded-full border border-zinc-200 object-cover dark:border-zinc-700"
                 />
               ) : (
-                <span className="flex size-9 items-center justify-center rounded-full bg-brand-50 text-sm font-medium text-brand-800">
+                <span className="flex size-9 items-center justify-center rounded-full bg-brand-50 text-sm font-medium text-brand-800 dark:bg-brand-950 dark:text-brand-200">
                   {userName?.charAt(0)?.toUpperCase() || 'U'}
                 </span>
               )}
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-zinc-900">
+                <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-50">
                   {userName || 'Signed in'}
                 </p>
                 {userEmail && (
-                  <p className="truncate text-xs text-zinc-500">{userEmail}</p>
+                  <p className="truncate text-xs text-zinc-500 dark:text-zinc-400">
+                    {userEmail}
+                  </p>
                 )}
               </div>
             </div>

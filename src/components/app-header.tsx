@@ -1,5 +1,6 @@
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
+import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/cn';
 
 interface AppHeaderProps {
@@ -16,17 +17,17 @@ export function AppHeader({
   onOpenSettings,
 }: AppHeaderProps) {
   return (
-    <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white">
+    <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
       <div className="mx-auto flex h-14 w-full max-w-7xl items-center gap-3 px-4 sm:px-6">
         <a
           href="/"
           className="flex min-w-0 items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/40"
         >
           <img src="/favicon.svg" alt="" className="size-6" />
-          <span className="text-[15px] font-semibold tracking-tight text-zinc-900">
+          <span className="text-[15px] font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
             Hatch
           </span>
-          <span className="hidden border-l border-zinc-200 pl-3 text-sm text-zinc-500 sm:inline">
+          <span className="hidden border-l border-zinc-200 pl-3 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400 sm:inline">
             Terminal Auth Portal
           </span>
         </a>
@@ -39,11 +40,13 @@ export function AppHeader({
             <span
               className={cn(
                 'size-1.5 rounded-full',
-                isProd ? 'bg-amber-500' : 'bg-zinc-400'
+                isProd ? 'bg-amber-500' : 'bg-zinc-400 dark:bg-zinc-500'
               )}
             />
             {isProd ? 'Production' : 'Development'}
           </Badge>
+
+          <ThemeToggle />
 
           <Button
             variant="ghost"
@@ -56,10 +59,10 @@ export function AppHeader({
                 src={userPicture}
                 alt=""
                 referrerPolicy="no-referrer"
-                className="size-8 rounded-full border border-zinc-200 object-cover"
+                className="size-8 rounded-full border border-zinc-200 object-cover dark:border-zinc-700"
               />
             ) : (
-              <span className="flex size-8 items-center justify-center rounded-full bg-brand-50 text-sm font-medium text-brand-800">
+              <span className="flex size-8 items-center justify-center rounded-full bg-brand-50 text-sm font-medium text-brand-800 dark:bg-brand-950 dark:text-brand-200">
                 {userName?.charAt(0)?.toUpperCase() || 'U'}
               </span>
             )}

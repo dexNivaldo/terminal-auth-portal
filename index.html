@@ -8,8 +8,22 @@
       name="description"
       content="Hatch — generate terminal authentication tokens for TAS and DPE."
     />
-    <meta name="theme-color" content="#0F766E" />
+    <meta name="theme-color" content="#E5173A" />
     <title>Hatch · Terminal Auth Portal</title>
+    <script>
+      (function () {
+        try {
+          var forced = new URLSearchParams(window.location.search).get('theme');
+          var stored = localStorage.getItem('theme');
+          var dark =
+            forced === 'dark' ||
+            (forced !== 'light' &&
+              (stored === 'dark' ||
+                (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)));
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

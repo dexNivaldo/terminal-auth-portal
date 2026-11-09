@@ -9,6 +9,7 @@ import { SettingsSheet } from './components/settings-sheet';
 import { Toast } from './components/toast';
 import { TokenForm } from './components/token-form';
 import { TokenResult } from './components/token-result';
+import { ThemeProvider, type Theme } from './hooks/use-theme';
 import { useToast } from './hooks/use-toast';
 import type { AuthResponse } from './types/auth';
 import type { AuthEntry, AuthApplication, EntryRole } from './types/auth-entry';
@@ -90,7 +91,7 @@ function Preview() {
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:py-8">
-        <p className="mb-4 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-3 py-2 text-xs text-zinc-500">
+        <p className="mb-4 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-3 py-2 text-xs text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
           Design preview — illustrative fixtures only. Not the authenticated app.
         </p>
 
@@ -166,8 +167,8 @@ function Preview() {
         />
       </main>
 
-      <footer className="border-t border-zinc-200 py-4">
-        <p className="mx-auto w-full max-w-7xl px-4 text-xs text-zinc-500 sm:px-6">
+      <footer className="border-t border-zinc-200 py-4 dark:border-zinc-800">
+        <p className="mx-auto w-full max-w-7xl px-4 text-xs text-zinc-500 sm:px-6 dark:text-zinc-500">
           Hatch.
         </p>
       </footer>
@@ -187,10 +188,16 @@ function Preview() {
   );
 }
 
+const forcedTheme = new URLSearchParams(window.location.search).get('theme');
+const initialTheme: Theme | undefined =
+  forcedTheme === 'dark' || forcedTheme === 'light' ? forcedTheme : undefined;
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MemoryRouter>
-      <Preview />
-    </MemoryRouter>
+    <ThemeProvider initialTheme={initialTheme}>
+      <MemoryRouter>
+        <Preview />
+      </MemoryRouter>
+    </ThemeProvider>
   </StrictMode>
 );

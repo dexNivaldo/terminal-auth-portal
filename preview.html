@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Hatch — Design preview (illustrative data)</title>
+    <script>
+      (function () {
+        try {
+          var forced = new URLSearchParams(window.location.search).get('theme');
+          var stored = localStorage.getItem('theme');
+          var dark =
+            forced === 'dark' ||
+            (forced !== 'light' &&
+              (stored === 'dark' ||
+                (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)));
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

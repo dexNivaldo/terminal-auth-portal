@@ -32,7 +32,7 @@ export function TokenResult({
 }: TokenResultProps) {
   return (
     <Card className="flex h-full flex-col" aria-busy={isLoading}>
-      <CardHeader className="border-b border-zinc-200 pb-4">
+      <CardHeader className="border-b border-zinc-200 pb-4 dark:border-zinc-800">
         <CardTitle>Auth token</CardTitle>
         <CardDescription aria-live="polite">
           {isLoading
@@ -75,15 +75,15 @@ export function TokenResult({
                 rows={3}
                 value={result.token}
                 onFocus={(event) => event.currentTarget.select()}
-                className="w-full resize-none rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-2.5 font-mono text-xs break-all text-zinc-800 focus-visible:border-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20"
+                className="w-full resize-none rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-2.5 font-mono text-xs break-all text-zinc-800 focus-visible:border-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
               />
             </div>
 
             <div className="space-y-3">
               <div className="space-y-1.5">
                 <Label>Local portal</Label>
-                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
-                  <p className="break-all font-mono text-xs text-zinc-700">
+                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900/60">
+                  <p className="break-all font-mono text-xs text-zinc-700 dark:text-zinc-300">
                     {buildLocalPortalUrl(result.token)}
                   </p>
                   <div className="mt-2.5 flex justify-end gap-2">
@@ -114,8 +114,8 @@ export function TokenResult({
 
               <div className="space-y-1.5">
                 <Label>Redirect URL</Label>
-                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
-                  <p className="break-all font-mono text-xs text-zinc-700">
+                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900/60">
+                  <p className="break-all font-mono text-xs text-zinc-700 dark:text-zinc-300">
                     {result.redirectUrl}
                   </p>
                   <div className="mt-2.5 flex justify-end gap-2">
@@ -143,44 +143,46 @@ export function TokenResult({
             </div>
 
             {meta && (
-              <dl className="grid grid-cols-2 gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-xs sm:grid-cols-4">
+              <dl className="grid grid-cols-2 gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-xs sm:grid-cols-4 dark:border-zinc-800 dark:bg-zinc-900/60">
                 <div>
-                  <dt className="text-zinc-500">Application</dt>
-                  <dd className="mt-0.5 font-medium text-zinc-900">
+                  <dt className="text-zinc-500 dark:text-zinc-400">Application</dt>
+                  <dd className="mt-0.5 font-medium text-zinc-900 dark:text-zinc-50">
                     {meta.application}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-zinc-500">Terminal</dt>
-                  <dd className="mt-0.5 font-medium text-zinc-900">
+                  <dt className="text-zinc-500 dark:text-zinc-400">Terminal</dt>
+                  <dd className="mt-0.5 font-medium text-zinc-900 dark:text-zinc-50">
                     {meta.terminalCode}
                     {meta.terminalName ? ` · ${meta.terminalName}` : ''}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-zinc-500">Role</dt>
-                  <dd className="mt-0.5 font-medium text-zinc-900">
+                  <dt className="text-zinc-500 dark:text-zinc-400">Role</dt>
+                  <dd className="mt-0.5 font-medium text-zinc-900 dark:text-zinc-50">
                     {roleLabels[meta.role]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-zinc-500">Patente</dt>
-                  <dd className="mt-0.5 font-medium text-zinc-900">{meta.patente}</dd>
+                  <dt className="text-zinc-500 dark:text-zinc-400">Patente</dt>
+                  <dd className="mt-0.5 font-medium text-zinc-900 dark:text-zinc-50">
+                    {meta.patente}
+                  </dd>
                 </div>
               </dl>
             )}
 
             {meta && (
-              <p className="text-xs text-zinc-500">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
                 Generated {formatDateTime(meta.createdAt)}
               </p>
             )}
 
-            <details className="rounded-lg border border-zinc-200 bg-white">
-              <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-600/40">
+            <details className="rounded-lg border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+              <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-600/40 dark:text-zinc-300">
                 Details
               </summary>
-              <pre className="max-h-48 overflow-auto border-t border-zinc-200 bg-zinc-50 p-3 font-mono text-xs text-zinc-700">
+              <pre className="max-h-48 overflow-auto border-t border-zinc-200 bg-zinc-50 p-3 font-mono text-xs text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300">
                 {JSON.stringify(result, null, 2)}
               </pre>
             </details>
@@ -188,12 +190,14 @@ export function TokenResult({
         )}
 
         {!isLoading && !error && !result && (
-          <div className="flex flex-1 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-zinc-300 bg-zinc-50/60 px-6 py-10 text-center">
-            <div className="rounded-full bg-zinc-100 p-3">
-              <KeyRound className="size-5 text-zinc-500" />
+          <div className="flex flex-1 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-zinc-300 bg-zinc-50/60 px-6 py-10 text-center dark:border-zinc-700 dark:bg-zinc-900/40">
+            <div className="rounded-full bg-zinc-100 p-3 dark:bg-zinc-800">
+              <KeyRound className="size-5 text-zinc-500 dark:text-zinc-400" />
             </div>
-            <p className="text-sm font-medium text-zinc-700">No token yet</p>
-            <p className="max-w-xs text-xs text-zinc-500">
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              No token yet
+            </p>
+            <p className="max-w-xs text-xs text-zinc-500 dark:text-zinc-400">
               Fill in the form and generate a token to see it here.
             </p>
           </div>

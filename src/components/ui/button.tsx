@@ -10,16 +10,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-brand-700 text-white shadow-sm hover:bg-brand-800 focus-visible:ring-white/80 focus-visible:ring-offset-brand-700',
+          'bg-brand-700 text-white shadow-sm hover:bg-brand-800 focus-visible:ring-white/80 focus-visible:ring-offset-brand-700 dark:bg-brand-600 dark:hover:bg-brand-500 dark:focus-visible:ring-offset-brand-600',
         secondary:
-          'border border-zinc-300 bg-white text-zinc-800 shadow-sm hover:bg-zinc-50 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white',
+          'border border-zinc-300 bg-white text-zinc-800 shadow-sm hover:bg-zinc-50 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-900',
         outline:
-          'border border-zinc-300 bg-transparent text-zinc-700 hover:bg-zinc-100 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white',
+          'border border-zinc-300 bg-transparent text-zinc-700 hover:bg-zinc-100 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-900',
         ghost:
-          'text-zinc-700 hover:bg-zinc-100 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white',
+          'text-zinc-700 hover:bg-zinc-100 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white dark:text-zinc-300 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-900',
         destructive:
-          'border border-red-200 bg-red-50 text-red-800 hover:bg-red-100 focus-visible:ring-red-700/30 focus-visible:ring-offset-white',
-        link: 'text-brand-700 underline-offset-4 hover:underline focus-visible:ring-brand-600/50',
+          'border border-red-200 bg-red-50 text-red-800 hover:bg-red-100 focus-visible:ring-red-700/30 focus-visible:ring-offset-white dark:border-red-900 dark:bg-red-950/50 dark:text-red-200 dark:hover:bg-red-950 dark:focus-visible:ring-offset-zinc-900',
+        link: 'text-brand-700 underline-offset-4 hover:underline focus-visible:ring-brand-600/50 dark:text-brand-300',
       },
       size: {
         default: 'h-9 px-4',

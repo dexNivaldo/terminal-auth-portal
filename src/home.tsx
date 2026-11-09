@@ -121,8 +121,8 @@ export default function Home() {
         />
       </main>
 
-      <footer className="border-t border-zinc-200 py-4">
-        <p className="mx-auto w-full max-w-7xl px-4 text-xs text-zinc-500 sm:px-6">
+      <footer className="border-t border-zinc-200 py-4 dark:border-zinc-800">
+        <p className="mx-auto w-full max-w-7xl px-4 text-xs text-zinc-500 sm:px-6 dark:text-zinc-500">
           Hatch.
         </p>
       </footer>

@@ -15,9 +15,11 @@ const sources = [
   '../index.html',
   '../public/favicon.svg',
   '../public/logo.svg',
+  '../src/main.tsx',
   '../src/home.tsx',
   '../src/login.tsx',
   '../src/components/app-header.tsx',
+  '../src/components/theme-toggle.tsx',
   '../src/components/settings-sheet.tsx',
   '../src/components/token-form.tsx',
   '../src/components/token-result.tsx',
@@ -35,6 +37,7 @@ const sources = [
   '../src/components/ui/separator.tsx',
   '../src/components/ui/label.tsx',
   '../src/hooks/use-auth-entry.ts',
+  '../src/hooks/use-theme.tsx',
   '../src/hooks/use-toast.ts',
   '../src/hooks/use-media-query.ts',
   '../src/hooks/use-local-storage-listener.ts',
@@ -64,6 +67,15 @@ const captures = [
   'captures/preview-sticky-mobile.png',
   'captures/preview-row-hover.png',
   'captures/preview-focus-tab-button.png',
+  'captures/login-dark-desktop.png',
+  'captures/preview-dark-success-desktop.png',
+  'captures/preview-dark-success-mobile.png',
+  'captures/preview-dark-error-desktop.png',
+  'captures/preview-dark-loading-desktop.png',
+  'captures/preview-dark-settings-desktop.png',
+  'captures/preview-dark-delete-desktop.png',
+  'captures/preview-dark-sticky-desktop.png',
+  'captures/preview-theme-toggled-to-dark.png',
 ];
 
 function capture(path) {
@@ -73,7 +85,7 @@ function capture(path) {
 const receipt = {
   schemaVersion: 'uizze.visual-evidence.v1',
   scope:
-    'Hatch full redesign — login and home surfaces, light theme, anti-slop system, brand accent #E5173A, sticky saved-entries filters. Verified with a labeled development preview harness (illustrative fixtures) plus the real login route.',
+    'Hatch full redesign — login and home surfaces, light and dark themes, anti-slop system, brand accent #E5173A, sticky saved-entries filters. Verified with a labeled development preview harness (illustrative fixtures) plus the real login route.',
   platform: 'web',
   sources,
   comparison: 'existing-system',
@@ -91,6 +103,14 @@ const receipt = {
     { id: 'saved-entries-sticky-mobile', kind: 'visual' },
     { id: 'saved-entry-row-click', kind: 'interaction' },
     { id: 'keyboard-focus-primary', kind: 'interaction' },
+    { id: 'login-dark-desktop', kind: 'visual' },
+    { id: 'home-dark-success-desktop', kind: 'visual' },
+    { id: 'home-dark-success-mobile', kind: 'visual' },
+    { id: 'home-dark-error-desktop', kind: 'visual' },
+    { id: 'home-dark-settings-desktop', kind: 'visual' },
+    { id: 'home-dark-delete-desktop', kind: 'visual' },
+    { id: 'home-dark-sticky-desktop', kind: 'visual' },
+    { id: 'theme-toggle-interaction', kind: 'interaction' },
   ],
   checks: [
     {
@@ -217,11 +237,89 @@ const receipt = {
         'After dispatching 8 Tab key events, document.activeElement is the "Generate token" button and matches(":focus-visible") is true. The teal button shows a white focus ring with a teal offset, clearly visible against the fill.',
       steps: [
         'Navigated to the preview route.',
-        'Dispatched 8 Tab key events through CDP Input.dispatchKeyEvent.',
+        'Dispatched 9 Tab key events through CDP Input.dispatchKeyEvent.',
         'Confirmed document.activeElement is the "Generate token" button and matches(":focus-visible") is true.',
         'Captured the focused state.',
       ],
       artifacts: [capture('captures/preview-focus-tab-button.png')],
+    },
+    {
+      id: 'login-dark-desktop',
+      status: 'pass',
+      state: 'Signed out, centered login card in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'Dark zinc-950 ground, zinc-900 card with a zinc-800 border, brand mark with its subtle inner border, "Sign in" heading, red "Continue with Google" CTA and a theme toggle in the top right. No gradients or glow.',
+      artifacts: [capture('captures/login-dark-desktop.png')],
+    },
+    {
+      id: 'home-dark-success-desktop',
+      status: 'pass',
+      state: 'Token generated successfully in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'Two-column workspace on a zinc-950 ground with zinc-900 cards and zinc-800 borders. One grey family (zinc) and one accent (#E5173A); Token, Local portal and Redirect URL remain readable and the theme toggle shows the Sun icon.',
+      artifacts: [capture('captures/preview-dark-success-desktop.png')],
+    },
+    {
+      id: 'home-dark-success-mobile',
+      status: 'pass',
+      state: 'Token generated successfully at a phone width in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 390, height: 844 },
+      observed:
+        'Single column stacks cleanly on a 390x844 dark viewport with no horizontal overflow; the header fits the brand, Development badge, theme toggle and avatar.',
+      artifacts: [capture('captures/preview-dark-success-mobile.png')],
+    },
+    {
+      id: 'home-dark-error-desktop',
+      status: 'pass',
+      state: 'Token request failed in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'Inline error alert uses a dark red surface and red-200 text with a "Try again" action, readable against the dark card.',
+      artifacts: [capture('captures/preview-dark-error-desktop.png')],
+    },
+    {
+      id: 'home-dark-settings-desktop',
+      status: 'pass',
+      state: 'Settings panel open in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'Right-side panel renders on a zinc-900 surface with zinc-800 dividers, environment toggle and account card.',
+      artifacts: [capture('captures/preview-dark-settings-desktop.png')],
+    },
+    {
+      id: 'home-dark-delete-desktop',
+      status: 'pass',
+      state: 'Saved entry delete confirmation open in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'The destructive "Delete" button uses a subtle dark-red outline style, distinct from the solid brand-red primary button.',
+      artifacts: [capture('captures/preview-dark-delete-desktop.png')],
+    },
+    {
+      id: 'home-dark-sticky-desktop',
+      status: 'pass',
+      state: 'Page scrolled to y=650 in dark mode',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'The "Saved entries" heading and filters stick below the dark header with an opaque zinc-950 background and a bottom border.',
+      artifacts: [capture('captures/preview-dark-sticky-desktop.png')],
+    },
+    {
+      id: 'theme-toggle-interaction',
+      status: 'pass',
+      state: 'Header theme toggle clicked from light to dark',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'Clicking the header theme toggle adds the "dark" class to documentElement, saves "dark" to localStorage, updates the button aria-label from "Switch to dark mode" to "Switch to light mode" and re-themes the entire surface without a reload.',
+      steps: [
+        'Opened the preview in light mode (darkClass: false, stored: "light").',
+        'Dispatched a mouse click on the header theme toggle button.',
+        'Verified documentElement.classList.contains("dark") is true, localStorage.getItem("theme") is "dark", and the button aria-label changed to "Switch to light mode".',
+        'Captured the resulting dark surface.',
+      ],
+      artifacts: [capture('captures/preview-theme-toggled-to-dark.png')],
     },
   ],
   unresolved: [

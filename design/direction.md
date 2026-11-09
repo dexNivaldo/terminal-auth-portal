@@ -6,7 +6,7 @@
 
 ## Visual world
 
-- Light neutral ground (`#FAFAFA`) with white surfaces and 1px zinc borders; one grey family (zinc).
+- Light neutral ground (`#FAFAFA`) with white surfaces and 1px zinc borders, plus a persistent dark mode (`#09090B` ground, `#18181B` surfaces, `#27272A` borders) following the same discipline; one grey family (zinc) across both modes.
 - One locked accent: brand red `#E5173A` (brand-700) for the primary action, active states, focus rings and the application badge. Semantic red/amber/green are reserved for status; the destructive button uses a soft red outline and error text uses a darker red so the primary action is never confused with danger.
 - Type: system sans stack (Inter-like), 12/14/16px steps; monospace only for the token and URL data.
 - Shape lock: inputs/buttons/selects 8px, cards 12px, badges/pills full.
