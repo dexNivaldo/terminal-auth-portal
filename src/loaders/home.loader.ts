@@ -2,11 +2,11 @@ import { redirect } from "react-router"
 import { getUser } from "../services/auth.service"
 
 export default async function () {
-   const usr = await getUser()
+   const user = await getUser()
 
-   if (!usr) {
+   if (!user) {
         return redirect('/login')
     }
 
-    return null
+    return { user }
   }

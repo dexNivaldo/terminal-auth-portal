@@ -2,43 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-  min-height: 100vh;
+@layer base {
+  :root {
+    --background: #fafafa;
+    --surface: #ffffff;
+    --border: #e4e4e7;
+    --border-strong: #d4d4d8;
+    --text: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+    --accent: #e5173a;
+    --accent-hover: #c81231;
+    --accent-subtle: #fef2f4;
+    --accent-900: #5c0818;
+    --danger: #dc2626;
+    --danger-subtle: #fef2f2;
+    --warning: #b45309;
+    --warning-subtle: #fffbeb;
+    --success: #15803d;
+    --success-subtle: #f0fdf4;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: theme('fontFamily.sans');
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent-subtle);
+    color: var(--accent-900);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1aa;
+  }
 }
 
-.glass-effect {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(71, 85, 105, 0.2);
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-.glass-card {
-  background: rgba(30, 41, 59, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(71, 85, 105, 0.3);
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #bebebe;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #888;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

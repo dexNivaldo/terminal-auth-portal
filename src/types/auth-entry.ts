@@ -11,6 +11,7 @@ export interface AuthEntry {
   };
   role: EntryRole;
   application: AuthApplication;
+  created_at: string;
 }
 
 

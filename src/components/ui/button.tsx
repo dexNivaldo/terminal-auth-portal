@@ -5,25 +5,26 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/cn';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        destructive:
-          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
-        outline:
-          'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+          'bg-brand-700 text-white shadow-sm hover:bg-brand-800 focus-visible:ring-white/80 focus-visible:ring-offset-brand-700',
         secondary:
-          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'border border-zinc-300 bg-white text-zinc-800 shadow-sm hover:bg-zinc-50 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white',
+        outline:
+          'border border-zinc-300 bg-transparent text-zinc-700 hover:bg-zinc-100 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white',
+        ghost:
+          'text-zinc-700 hover:bg-zinc-100 focus-visible:ring-brand-600/50 focus-visible:ring-offset-white',
+        destructive:
+          'border border-red-200 bg-red-50 text-red-800 hover:bg-red-100 focus-visible:ring-red-700/30 focus-visible:ring-offset-white',
+        link: 'text-brand-700 underline-offset-4 hover:underline focus-visible:ring-brand-600/50',
       },
       size: {
-        default: 'h-9 px-4 py-2',
+        default: 'h-9 px-4',
         sm: 'h-8 rounded-md px-3 text-xs',
-        lg: 'h-10 rounded-md px-8',
+        lg: 'h-10 px-5',
         icon: 'h-9 w-9',
       },
     },

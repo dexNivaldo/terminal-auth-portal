@@ -1,12 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 type LocalStorageCustomEvent = CustomEvent<{ key: string; value: string }>;
 
-export function useLocalStorageChange(callback: (key: string, value: string) => void) {
+export function useLocalStorageChange(
+  callback: (key: string, value: string) => void
+) {
+  const callbackRef = useRef(callback);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
   useEffect(() => {
     const handleCustomStorageChange = (event: Event) => {
       const customEvent = event as LocalStorageCustomEvent;
-      callback(customEvent.detail.key, customEvent.detail.value);
+      callbackRef.current(customEvent.detail.key, customEvent.detail.value);
     };
 
     window.addEventListener('local-storage-change', handleCustomStorageChange);
@@ -14,5 +22,5 @@ export function useLocalStorageChange(callback: (key: string, value: string) => 
     return () => {
       window.removeEventListener('local-storage-change', handleCustomStorageChange);
     };
-  }, [callback]);
+  }, []);
 }

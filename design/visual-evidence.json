@@ -1,0 +1,452 @@
+{
+  "schemaVersion": "uizze.visual-evidence.v1",
+  "scope": "Hatch full redesign — login and home surfaces, light theme, anti-slop system, brand accent #E5173A, sticky saved-entries filters. Verified with a labeled development preview harness (illustrative fixtures) plus the real login route.",
+  "platform": "web",
+  "sources": [
+    {
+      "path": "../src/index.css",
+      "sha256": "b532c87188ba801447584d1649038cfaba33f1770a5e3348484c1b75557c1d21"
+    },
+    {
+      "path": "../tailwind.config.js",
+      "sha256": "480a5995f0e839cb7fa6ddeea23d5744694a10832da969f3c460b2a320d60951"
+    },
+    {
+      "path": "../index.html",
+      "sha256": "8d0a9994668b4c4af60bdab044e31a6b1cce9efb78b78ad07edd75f93a2de269"
+    },
+    {
+      "path": "../public/favicon.svg",
+      "sha256": "1c71e5976b1be73fb0f10e009e78a79b234eb09dec218ff39d34d64a37dc42dd"
+    },
+    {
+      "path": "../public/logo.svg",
+      "sha256": "207dcf0af0b8c38eb04a1abe2e2eb12c7120981f48d5abddaf78058629a6b492"
+    },
+    {
+      "path": "../src/home.tsx",
+      "sha256": "ffe540cb6366b0f22e670d0cbeecaf1489de41ccb551a5cc63a5fc514a4500d2"
+    },
+    {
+      "path": "../src/login.tsx",
+      "sha256": "6680f690225ad1b7d2a9d7b595371311494eda8bf35f01b29a5b4c5b02436ef9"
+    },
+    {
+      "path": "../src/components/app-header.tsx",
+      "sha256": "28f4e42c8422709a9d82f771eba27000d15217e0c907d5c9e1c580739e865186"
+    },
+    {
+      "path": "../src/components/settings-sheet.tsx",
+      "sha256": "71094fff541a5d69f61f4680f3d1b241256314c832fb307c0511d7b7112e7790"
+    },
+    {
+      "path": "../src/components/token-form.tsx",
+      "sha256": "01da2203f22777e5a055db4905bddf96ed000bf0dab6eb60a54c0a55c261d8a8"
+    },
+    {
+      "path": "../src/components/token-result.tsx",
+      "sha256": "f32f680879ae124f762b997256743519cb5f22bbae9ba686819f93a63e06c341"
+    },
+    {
+      "path": "../src/components/saved-entries.tsx",
+      "sha256": "cd3ae00630044dd0db5807a5eafa62fcfda98d69d6fc4db25ccd00decd74366c"
+    },
+    {
+      "path": "../src/components/toast.tsx",
+      "sha256": "ca5648dbcc3787f8dea1c628d95a18f254a86d1072682bd0f077af939d1cd3e9"
+    },
+    {
+      "path": "../src/components/ui/button.tsx",
+      "sha256": "e022abad960e966c6ea4e4edb91e7c17074a941add928b39fc1cff90e49e7e7b"
+    },
+    {
+      "path": "../src/components/ui/card.tsx",
+      "sha256": "012afe17fe103332765e72818343426bac30c451f4124d3a0b8e2b6e8001a1b7"
+    },
+    {
+      "path": "../src/components/ui/input.tsx",
+      "sha256": "1b3263f2c4dc207ae591333f118698511bb1caa32dc017bbae2eaf78aba22d8f"
+    },
+    {
+      "path": "../src/components/ui/badge.tsx",
+      "sha256": "98c457abcf06f0843f69a5d9f809d9da91015122a535bc3e8c9fa25ae15ed99d"
+    },
+    {
+      "path": "../src/components/ui/skeleton.tsx",
+      "sha256": "a076a712c53159f45749a92e57c376ab664e50a032050215bbcb7d39b9ba6809"
+    },
+    {
+      "path": "../src/components/ui/alert.tsx",
+      "sha256": "706bd0e3590a94d0173fb48a68c107092710d9a4a7a9c8e1ba9645758e95792e"
+    },
+    {
+      "path": "../src/components/ui/select.tsx",
+      "sha256": "0928537cf3431e81bc4ecc084a15d8a2f8dd0d0edaa26e1f663f4dcd156ad1f0"
+    },
+    {
+      "path": "../src/components/ui/switch.tsx",
+      "sha256": "86925295e9bc874113d4a10e380a6a24c1c2561027fb055d7b8c465d41ebbc6a"
+    },
+    {
+      "path": "../src/components/ui/drawer.tsx",
+      "sha256": "c67d5d13580717abfab5017f8d8a367929ab86d01062f05c3efb23654e2dde5d"
+    },
+    {
+      "path": "../src/components/ui/separator.tsx",
+      "sha256": "2b45773ebe7c722aed0a11b450509de8aeffb551b36a50b8945e0d8e2202cdaa"
+    },
+    {
+      "path": "../src/components/ui/label.tsx",
+      "sha256": "c98ae21b06915b1b6f3d3755e266d983fcf259f347fa9d881f045779f2155ceb"
+    },
+    {
+      "path": "../src/hooks/use-auth-entry.ts",
+      "sha256": "5ccb0914f772315c370c36407fb32ff3c28d52c8e2dc7d613d858aee9f47883d"
+    },
+    {
+      "path": "../src/hooks/use-toast.ts",
+      "sha256": "a451f996de351a497179eaaaecd939af011000fece608e8ce63bed4a91abf817"
+    },
+    {
+      "path": "../src/hooks/use-media-query.ts",
+      "sha256": "942554d739aa7b471b85d2f2ecfd9d9935160b48336ce8fa1e11680959b2a70a"
+    },
+    {
+      "path": "../src/hooks/use-local-storage-listener.ts",
+      "sha256": "ef3fea9e2af64111b5d72a498303f5b5c55e42ef991cd09d2a2eaf0a8d3bec55"
+    },
+    {
+      "path": "../src/hooks/use-async-list.ts",
+      "sha256": "774a78a0af4cad6a7074ea8aa7ae932dab3d975ca85c33039d05da887152abbd"
+    },
+    {
+      "path": "../src/hooks/use-debounce.ts",
+      "sha256": "9226ebbc0a8505bac326cad49226e4631d05dada103f0d75d80c7da77a68eacc"
+    },
+    {
+      "path": "../src/services/auth.service.ts",
+      "sha256": "145923d9f9a29fcf9da9dc32eea1ca40efd245fc57dd7d0b55bf41218495c203"
+    },
+    {
+      "path": "../src/services/auth-entries.service.ts",
+      "sha256": "54b2861ed76be2c92b8b36ad5615213cad562b9f54fce4228ab541cd0f4ce18c"
+    },
+    {
+      "path": "../src/loaders/home.loader.ts",
+      "sha256": "2c1e4dc66963f660a0c19f6184127bde5c2287c1e7c1197bca8bff7cc22fafd1"
+    },
+    {
+      "path": "../src/utils/settings.ts",
+      "sha256": "eb559f05934757ebb891d73242bfad07a0e5d614a6f4579e603c52c3da541bd1"
+    },
+    {
+      "path": "../src/utils/format.ts",
+      "sha256": "dcd5ba3d933dd19d0d79adedcfc0f07a0de58f19595c3289588f2a32c28e47bd"
+    },
+    {
+      "path": "../src/types/auth-entry.ts",
+      "sha256": "9a6d58c2f19c58d39f1093bda632269c2a51915127c8a9f737036e25fd77b7b9"
+    },
+    {
+      "path": "../src/preview.tsx",
+      "sha256": "1f76fee15521e2ec2516d9ec440e1437c9fad1776d302766b97876120051ac47"
+    },
+    {
+      "path": "../design/direction.md",
+      "sha256": "f7ef81be0f1c6b7f12e36f41f1dc5e8b9e3c43b36cd559263a63e2ee19f02501"
+    }
+  ],
+  "comparison": "existing-system",
+  "requiredChecks": [
+    {
+      "id": "login-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-success-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-success-mobile",
+      "kind": "visual"
+    },
+    {
+      "id": "home-success-tablet",
+      "kind": "visual"
+    },
+    {
+      "id": "home-loading-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-error-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-empty-entries-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "home-settings-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "delete-confirm-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "saved-entries-sticky-desktop",
+      "kind": "visual"
+    },
+    {
+      "id": "saved-entries-sticky-mobile",
+      "kind": "visual"
+    },
+    {
+      "id": "keyboard-focus-primary",
+      "kind": "interaction"
+    }
+  ],
+  "checks": [
+    {
+      "id": "login-desktop",
+      "status": "pass",
+      "state": "Signed out, centered login card",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Brand mark, \"Sign in\" heading, teal \"Continue with Google\" button with the Google mark, and helper text render on a plain light ground. No gradients, glass, blobs or decorative illustration. Focus order begins at the brand link and button.",
+      "artifacts": [
+        {
+          "path": "captures/login-desktop.png",
+          "kind": "image",
+          "sha256": "d963c797817fb97044c9f14ea47407b59417f184480ae92e122498dba0bcfc24"
+        }
+      ]
+    },
+    {
+      "id": "home-success-desktop",
+      "status": "pass",
+      "state": "Token generated successfully",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Two-column workspace: form card (Patente, Application segmented control with TAS active in the single teal accent, Terminal, Role, Generate/Save/Share) and result card (token box with copy, redirect URL with Open/Copy, metadata grid, Details disclosure). Saved entries below with search, role filter pills, application filter and rows. One accent hue, one grey family, no gradients or glass.",
+      "artifacts": [
+        {
+          "path": "captures/preview-success-desktop.png",
+          "kind": "image",
+          "sha256": "6fa1a379fccb242f2d3f4b910ad144a60e3b79d066cedb086a94180bddb2f96d"
+        }
+      ]
+    },
+    {
+      "id": "home-success-mobile",
+      "status": "pass",
+      "state": "Token generated successfully at a phone width",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 390,
+        "height": 844
+      },
+      "observed": "Single column stacks the form above the result. Header brand, Development badge and avatar fit without horizontal overflow; buttons are full width and every field fits the viewport.",
+      "artifacts": [
+        {
+          "path": "captures/preview-success-mobile.png",
+          "kind": "image",
+          "sha256": "16874d48b3164dab719799f6a6bfc601797222adb7ed243ab2d8e81d2dcc583c"
+        }
+      ]
+    },
+    {
+      "id": "home-success-tablet",
+      "status": "pass",
+      "state": "Token generated successfully at a tablet width",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 768,
+        "height": 1024
+      },
+      "observed": "Single column below the lg breakpoint; the sm button row applies and the workspace stays readable with no overflow.",
+      "artifacts": [
+        {
+          "path": "captures/preview-success-tablet.png",
+          "kind": "image",
+          "sha256": "f738ddd05da51d8ed2a7dd858c57b0093caf277d9d350501f107c90c679b802e"
+        }
+      ]
+    },
+    {
+      "id": "home-loading-desktop",
+      "status": "pass",
+      "state": "Token request in flight",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Result panel shows a skeleton matching the result shape, a \"Generating token…\" status and a disabled primary button with a spinner. The rest of the page stays stable.",
+      "artifacts": [
+        {
+          "path": "captures/preview-loading-desktop.png",
+          "kind": "image",
+          "sha256": "c0e3b4e7b1265affd187f60ceec6bb8325d8a74c412c9390911af3160c2ece9a"
+        }
+      ]
+    },
+    {
+      "id": "home-error-desktop",
+      "status": "pass",
+      "state": "Token request failed",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Result panel shows an inline error alert with a \"Try again\" action; no raw error dump and no page-level crash.",
+      "artifacts": [
+        {
+          "path": "captures/preview-error-desktop.png",
+          "kind": "image",
+          "sha256": "57de14ae8ac9b05f13eada827c6e075c387564c76730ab13d9861bef3fbde2ca"
+        }
+      ]
+    },
+    {
+      "id": "home-empty-entries-desktop",
+      "status": "pass",
+      "state": "No saved entries",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Empty saved-entries state uses a dashed container, an icon and guidance to save a configuration; the counter reads 0 of 0 and the search and filters remain available.",
+      "artifacts": [
+        {
+          "path": "captures/preview-empty-entries-desktop.png",
+          "kind": "image",
+          "sha256": "f5b07619d5862971e393eb7295305db5ca4cdc2a4dd440c4ba61e0e60b9750c2"
+        }
+      ]
+    },
+    {
+      "id": "home-settings-desktop",
+      "status": "pass",
+      "state": "Settings panel open",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Settings opens as a right-side panel with an Environment section (production toggle and warning) and an Account section (profile, email, sign out). The overlay dims the page and the panel is reachable.",
+      "artifacts": [
+        {
+          "path": "captures/preview-settings-desktop.png",
+          "kind": "image",
+          "sha256": "18ce0ed05ccb6b071a554b51643ca31cba3a3f090df65e4c7a9fded9f1507a09"
+        }
+      ]
+    },
+    {
+      "id": "delete-confirm-desktop",
+      "status": "pass",
+      "state": "Saved entry delete confirmation open",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "The destructive \"Delete\" action uses a soft red outline style, clearly distinct from the solid brand-red primary \"Generate token\" button. \"Cancel\" is a neutral ghost action, so primary and destructive intents are not confusable now that the accent is red.",
+      "artifacts": [
+        {
+          "path": "captures/preview-delete-confirm-desktop.png",
+          "kind": "image",
+          "sha256": "4d1914bd6aed69ada89d2f2c45251d3b72ffcfd60ad2ff36d7b70c9a91a2aaf8"
+        }
+      ]
+    },
+    {
+      "id": "saved-entries-sticky-desktop",
+      "status": "pass",
+      "state": "Page scrolled to y=650 on a 1440x900 viewport",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "The \"Saved entries\" heading, counter, search field and filter pills/select stick below the 56px app header while the entry list scrolls beneath them. The sticky bar has an opaque background and a bottom border, so rows do not show through.",
+      "artifacts": [
+        {
+          "path": "captures/preview-sticky-desktop.png",
+          "kind": "image",
+          "sha256": "03efe9b29136d14900fa235ba0171901da207ba1696bc3079e775570e608774e"
+        }
+      ]
+    },
+    {
+      "id": "saved-entries-sticky-mobile",
+      "status": "pass",
+      "state": "Page scrolled to y=900 on a 390x844 viewport",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 390,
+        "height": 844
+      },
+      "observed": "On a phone width the heading and filters remain stuck below the header; the description is hidden to keep the bar compact, and the search, role pills and application filter stay reachable while the list scrolls under them.",
+      "artifacts": [
+        {
+          "path": "captures/preview-sticky-mobile.png",
+          "kind": "image",
+          "sha256": "97aa237fe67c2e57b2a844882c05e1e4ea6d77b6cc85b84fdf52e5b40c5337c9"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-focus-primary",
+      "status": "pass",
+      "state": "Primary action focused with the keyboard",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "After dispatching 8 Tab key events, document.activeElement is the \"Generate token\" button and matches(\":focus-visible\") is true. The teal button shows a white focus ring with a teal offset, clearly visible against the fill.",
+      "steps": [
+        "Navigated to the preview route.",
+        "Dispatched 8 Tab key events through CDP Input.dispatchKeyEvent.",
+        "Confirmed document.activeElement is the \"Generate token\" button and matches(\":focus-visible\") is true.",
+        "Captured the focused state."
+      ],
+      "artifacts": [
+        {
+          "path": "captures/preview-focus-tab-button.png",
+          "kind": "image",
+          "sha256": "20f4af2e9d7be29256281af9c999412a2acb1ee39947515da49ead4cd4d1151f"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "target-generation: the authorized image-generation service returned \"Insufficient account funds\" for both target requests, so no generated target exists and no 1:1 target comparison is claimed.",
+    "authenticated-home-render: the real home surface needs a Google/Supabase session and the TAS/DPE backend; verification used the labeled development preview harness with illustrative fixtures, not the authenticated app.",
+    "screen-reader-audit: no VoiceOver/NVDA session was run; semantic roles and live regions were implemented and code-reviewed but not assistive-technology audited.",
+    "eslint: the project ESLint config fails to load a rule because of a pre-existing dependency version mismatch; TypeScript and the production build pass."
+  ]
+}

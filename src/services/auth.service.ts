@@ -8,6 +8,20 @@ export async function getUser() {
   return user
 }
 
+export async function signOut() {
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    throw error
+  }
+}
+
+const LOCAL_PORTAL_BASE_URL = import.meta.env.VITE_LOCAL_PORTAL_URL || 'http://localhost:3000'
+
+export function buildLocalPortalUrl(token: string) {
+  return `${LOCAL_PORTAL_BASE_URL}/auth?token=${encodeURIComponent(token)}`
+}
+
 const userTypeMap: Record<EntryRole, string> = {
   'AA': 'LINE',
   'CARRIER': 'CARRIER',
