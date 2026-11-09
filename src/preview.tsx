@@ -161,7 +161,7 @@ function Preview() {
           onRequestDelete={setConfirmDeleteId}
           onCancelDelete={() => setConfirmDeleteId(null)}
           onConfirmDelete={() => setConfirmDeleteId(null)}
-          onUse={() => undefined}
+          onUse={(entry) => notify(`Using ${entry.patente}`)}
           onRetry={() => undefined}
         />
       </main>

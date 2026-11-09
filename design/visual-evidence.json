@@ -29,7 +29,7 @@
     },
     {
       "path": "../src/login.tsx",
-      "sha256": "6680f690225ad1b7d2a9d7b595371311494eda8bf35f01b29a5b4c5b02436ef9"
+      "sha256": "bd240864c615267cefde8949a0f1c9e84a1390e826e925da75919ab5e7bf55b5"
     },
     {
       "path": "../src/components/app-header.tsx",
@@ -49,7 +49,7 @@
     },
     {
       "path": "../src/components/saved-entries.tsx",
-      "sha256": "cd3ae00630044dd0db5807a5eafa62fcfda98d69d6fc4db25ccd00decd74366c"
+      "sha256": "015d694acd3bfbeeec3913cf3142c03b4b6ec5af6214c57c05b07c1fd8ac0b2a"
     },
     {
       "path": "../src/components/toast.tsx",
@@ -149,7 +149,7 @@
     },
     {
       "path": "../src/preview.tsx",
-      "sha256": "1f76fee15521e2ec2516d9ec440e1437c9fad1776d302766b97876120051ac47"
+      "sha256": "f663d30dddd088d9e83e12e46368ca070de97c29ce0f1918ba070aa969f162dd"
     },
     {
       "path": "../design/direction.md",
@@ -203,6 +203,10 @@
       "kind": "visual"
     },
     {
+      "id": "saved-entry-row-click",
+      "kind": "interaction"
+    },
+    {
       "id": "keyboard-focus-primary",
       "kind": "interaction"
     }
@@ -242,7 +246,7 @@
         {
           "path": "captures/preview-success-desktop.png",
           "kind": "image",
-          "sha256": "6fa1a379fccb242f2d3f4b910ad144a60e3b79d066cedb086a94180bddb2f96d"
+          "sha256": "bdcd6d1a8e69931d559c2bef2ddf44d60c9a9bb02a1e7ab05a4e7477521ca702"
         }
       ]
     },
@@ -375,7 +379,7 @@
         {
           "path": "captures/preview-delete-confirm-desktop.png",
           "kind": "image",
-          "sha256": "4d1914bd6aed69ada89d2f2c45251d3b72ffcfd60ad2ff36d7b70c9a91a2aaf8"
+          "sha256": "5cd520c850392721af53f94d1dcf0632a19adf6751f56e0e51cee4fa4fc51ab0"
         }
       ]
     },
@@ -394,7 +398,7 @@
         {
           "path": "captures/preview-sticky-desktop.png",
           "kind": "image",
-          "sha256": "03efe9b29136d14900fa235ba0171901da207ba1696bc3079e775570e608774e"
+          "sha256": "0275216c3df72a7c50769ddcb087c55b9a9262c2b0ca5ed2de6325530d6bf2c0"
         }
       ]
     },
@@ -413,7 +417,33 @@
         {
           "path": "captures/preview-sticky-mobile.png",
           "kind": "image",
-          "sha256": "97aa237fe67c2e57b2a844882c05e1e4ea6d77b6cc85b84fdf52e5b40c5337c9"
+          "sha256": "3bd49b22c9233c668ef43d37029abeb44a976fdfe150bc0d9fc60e5cea805a22"
+        }
+      ]
+    },
+    {
+      "id": "saved-entry-row-click",
+      "status": "pass",
+      "state": "Saved-entry row hover and click",
+      "environment": {
+        "kind": "browser",
+        "name": "Chromium 156 headless",
+        "width": 1440,
+        "height": 900
+      },
+      "observed": "Hovering the row applies a light background and pointer cursor, indicating it is clickable. A mouse click on the patente text (outside the buttons) triggered the \"Using ABCD1234\" toast, so the whole row activates Use. Clicking the delete icon opened the Delete/Cancel confirmation without triggering Use. The Use button itself still works and is keyboard focusable.",
+      "steps": [
+        "Navigated to the preview route and scrolled the first saved-entry row into view.",
+        "Hovered the row and captured the highlight state.",
+        "Dispatched a mouse click on the patente text, outside the buttons.",
+        "Confirmed the \"Using ABCD1234\" toast appeared (row click activates Use).",
+        "Clicked the delete icon and confirmed the Delete/Cancel actions appeared with no \"Using\" toast."
+      ],
+      "artifacts": [
+        {
+          "path": "captures/preview-row-hover.png",
+          "kind": "image",
+          "sha256": "aec09a28c887e29778d655c52ac31b8e970daeebcc2f9352e7da0de444b8ade6"
         }
       ]
     },

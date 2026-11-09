@@ -176,7 +176,7 @@ export function SavedEntries({
             {filteredEntries.map((entry) => (
               <li
                 key={entry.id}
-                className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center"
+                className="relative flex cursor-pointer flex-col gap-3 p-4 transition-colors hover:bg-zinc-50 sm:flex-row sm:items-center"
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
@@ -195,7 +195,13 @@ export function SavedEntries({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Button variant="secondary" size="sm" onClick={() => onUse(entry)}>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    aria-label={`Use entry ${entry.patente}`}
+                    className="after:absolute after:inset-0 after:content-['']"
+                    onClick={() => onUse(entry)}
+                  >
                     Use
                   </Button>
                   {confirmDeleteId === entry.id ? (
@@ -203,11 +209,17 @@ export function SavedEntries({
                       <Button
                         variant="destructive"
                         size="sm"
+                        className="relative z-10"
                         onClick={() => onConfirmDelete(entry.id)}
                       >
                         Delete
                       </Button>
-                      <Button variant="ghost" size="sm" onClick={onCancelDelete}>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="relative z-10"
+                        onClick={onCancelDelete}
+                      >
                         Cancel
                       </Button>
                     </>
@@ -216,6 +228,7 @@ export function SavedEntries({
                       variant="ghost"
                       size="icon"
                       aria-label={`Delete entry ${entry.patente}`}
+                      className="relative z-10"
                       onClick={() => onRequestDelete(entry.id)}
                     >
                       <Trash2 />

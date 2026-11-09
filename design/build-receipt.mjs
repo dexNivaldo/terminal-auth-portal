@@ -62,6 +62,7 @@ const captures = [
   'captures/preview-delete-confirm-desktop.png',
   'captures/preview-sticky-desktop.png',
   'captures/preview-sticky-mobile.png',
+  'captures/preview-row-hover.png',
   'captures/preview-focus-tab-button.png',
 ];
 
@@ -88,6 +89,7 @@ const receipt = {
     { id: 'delete-confirm-desktop', kind: 'visual' },
     { id: 'saved-entries-sticky-desktop', kind: 'visual' },
     { id: 'saved-entries-sticky-mobile', kind: 'visual' },
+    { id: 'saved-entry-row-click', kind: 'interaction' },
     { id: 'keyboard-focus-primary', kind: 'interaction' },
   ],
   checks: [
@@ -189,6 +191,22 @@ const receipt = {
       observed:
         'On a phone width the heading and filters remain stuck below the header; the description is hidden to keep the bar compact, and the search, role pills and application filter stay reachable while the list scrolls under them.',
       artifacts: [capture('captures/preview-sticky-mobile.png')],
+    },
+    {
+      id: 'saved-entry-row-click',
+      status: 'pass',
+      state: 'Saved-entry row hover and click',
+      environment: { kind: 'browser', name: 'Chromium 156 headless', width: 1440, height: 900 },
+      observed:
+        'Hovering the row applies a light background and pointer cursor, indicating it is clickable. A mouse click on the patente text (outside the buttons) triggered the "Using ABCD1234" toast, so the whole row activates Use. Clicking the delete icon opened the Delete/Cancel confirmation without triggering Use. The Use button itself still works and is keyboard focusable.',
+      steps: [
+        'Navigated to the preview route and scrolled the first saved-entry row into view.',
+        'Hovered the row and captured the highlight state.',
+        'Dispatched a mouse click on the patente text, outside the buttons.',
+        'Confirmed the "Using ABCD1234" toast appeared (row click activates Use).',
+        'Clicked the delete icon and confirmed the Delete/Cancel actions appeared with no "Using" toast.',
+      ],
+      artifacts: [capture('captures/preview-row-hover.png')],
     },
     {
       id: 'keyboard-focus-primary',
