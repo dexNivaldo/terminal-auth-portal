@@ -94,6 +94,30 @@
   }
 }
 
+@keyframes seasonal-fall {
+  from {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+.seasonal-particle {
+  position: absolute;
+  top: 0;
+  opacity: 0.3;
+  animation-name: seasonal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seasonal-particle {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

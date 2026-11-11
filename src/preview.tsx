@@ -87,6 +87,7 @@ function Preview() {
       <AppHeader
         isProd={isProd}
         userName="Demo User"
+        event={null}
         onOpenSettings={() => setSettingsOpen(true)}
       />
 

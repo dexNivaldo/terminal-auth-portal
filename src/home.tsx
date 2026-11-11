@@ -4,11 +4,13 @@ import type { User } from '@supabase/supabase-js';
 
 import { AppHeader } from './components/app-header';
 import { SavedEntries } from './components/saved-entries';
+import { SeasonalDecor } from './components/seasonal-decor';
 import { SettingsSheet } from './components/settings-sheet';
 import { Toast } from './components/toast';
 import { TokenForm } from './components/token-form';
 import { TokenResult } from './components/token-result';
 import useAuthEntry from './hooks/use-auth-entry';
+import { useActiveEvent } from './hooks/use-active-event';
 import { useLocalStorageChange } from './hooks/use-local-storage-listener';
 import { useToast } from './hooks/use-toast';
 import { loadSettings, saveSettings, type AppSettings } from './utils/settings';
@@ -19,6 +21,7 @@ export default function Home() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { toast, notify } = useToast();
   const authEntry = useAuthEntry({ notify });
+  const activeEvent = useActiveEvent();
   const resultRef = useRef<HTMLDivElement>(null);
 
   useLocalStorageChange((key) => {
@@ -54,14 +57,17 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SeasonalDecor event={activeEvent} />
+
       <AppHeader
         isProd={settings.isProd}
         userName={userName}
         userPicture={userPicture}
+        event={activeEvent}
         onOpenSettings={() => setSettingsOpen(true)}
       />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:py-8">
+      <main className="relative z-10 mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <TokenForm

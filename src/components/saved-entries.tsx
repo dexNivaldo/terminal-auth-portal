@@ -15,6 +15,7 @@ import {
 import { cn } from '@/lib/cn';
 import type { AppFilter, RoleFilter } from '@/hooks/use-auth-entry';
 import { roleLabels } from '@/hooks/use-auth-entry';
+import { useIsStuck } from '@/hooks/use-is-stuck';
 import type { AuthEntry } from '@/types/auth-entry';
 import { formatDate } from '@/utils/format';
 
@@ -68,9 +69,18 @@ export function SavedEntries({
   onUse,
   onRetry,
 }: SavedEntriesProps) {
+  const { sentinelRef, isStuck } = useIsStuck(56);
+
   return (
     <section aria-labelledby="saved-entries-heading" className="mt-8">
-      <div className="sticky top-14 z-20 border-b border-zinc-200 bg-zinc-50 pb-3 dark:border-zinc-800 dark:bg-zinc-950">
+      <div ref={sentinelRef} aria-hidden="true" className="h-px" />
+      <div
+        className={cn(
+          'sticky top-14 z-20 pb-3',
+          isStuck &&
+            'border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950'
+        )}
+      >
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
             <h2
