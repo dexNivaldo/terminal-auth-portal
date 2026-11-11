@@ -34,15 +34,19 @@ export default function Home() {
     [settings]
   );
 
-  useEffect(() => {
-    if (!authEntry.result) return;
-    if (!window.matchMedia('(max-width: 1023px)').matches) return;
+  const scrollToResult = useCallback(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     resultRef.current?.scrollIntoView({
       behavior: reduceMotion ? 'auto' : 'smooth',
       block: 'start',
     });
-  }, [authEntry.result]);
+  }, []);
+
+  useEffect(() => {
+    if (!authEntry.result) return;
+    if (!window.matchMedia('(max-width: 1023px)').matches) return;
+    scrollToResult();
+  }, [authEntry.result, scrollToResult]);
 
   const userName = user?.user_metadata?.name;
   const userEmail = user?.email;
@@ -88,7 +92,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="lg:col-span-7" ref={resultRef}>
+          <div className="scroll-mt-20 lg:col-span-7" ref={resultRef}>
             <TokenResult
               result={authEntry.result}
               isLoading={authEntry.isGenerating}
@@ -116,7 +120,10 @@ export default function Home() {
           onRequestDelete={authEntry.setConfirmDeleteId}
           onCancelDelete={() => authEntry.setConfirmDeleteId(null)}
           onConfirmDelete={(id) => void authEntry.handleDelete(id)}
-          onUse={authEntry.handleTagClick}
+          onUse={(entry) => {
+            authEntry.handleTagClick(entry);
+            scrollToResult();
+          }}
           onRetry={authEntry.fetchEntries}
         />
       </main>

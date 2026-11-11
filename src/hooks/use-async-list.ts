@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps, react-hooks/use-memo */
 import { useCallback, useEffect, useState } from "react"
 import useDebounce from "./use-debounce"
 import { SortState } from "../types/sort"

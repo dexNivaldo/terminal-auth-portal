@@ -3,7 +3,6 @@ import { Copy, ExternalLink, KeyRound } from 'lucide-react';
 import { Alert } from './ui/alert';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Label } from './ui/label';
 import { Skeleton } from './ui/skeleton';
 import type { GeneratedMeta } from '@/hooks/use-auth-entry';
 import { roleLabels } from '@/hooks/use-auth-entry';
@@ -57,87 +56,74 @@ export function TokenResult({
 
         {result && !isLoading && (
           <>
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between gap-2">
-                <Label htmlFor="token-value">Token</Label>
+
+            <div className="divide-y divide-zinc-200 rounded-lg border border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
+              <div className="flex items-center justify-between gap-2 px-3 py-2">
+                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Token
+                </span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => onCopy(result.token, 'Token copied to clipboard.')}
                 >
                   <Copy />
-                  Copy token
+                  Copy
                 </Button>
               </div>
-              <textarea
-                id="token-value"
-                readOnly
-                rows={3}
-                value={result.token}
-                onFocus={(event) => event.currentTarget.select()}
-                className="w-full resize-none rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-2.5 font-mono text-xs break-all text-zinc-800 focus-visible:border-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
-              />
-            </div>
 
-            <div className="space-y-3">
-              <div className="space-y-1.5">
-                <Label>Local portal</Label>
-                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900/60">
-                  <p className="break-all font-mono text-xs text-zinc-700 dark:text-zinc-300">
-                    {buildLocalPortalUrl(result.token)}
-                  </p>
-                  <div className="mt-2.5 flex justify-end gap-2">
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={() => onOpen(buildLocalPortalUrl(result.token))}
-                    >
-                      <ExternalLink />
-                      Open
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() =>
-                        onCopy(
-                          buildLocalPortalUrl(result.token),
-                          'Local portal link copied to clipboard.'
-                        )
-                      }
-                    >
-                      <Copy />
-                      Copy
-                    </Button>
-                  </div>
+              <div className="flex items-center justify-between gap-2 px-3 py-2">
+                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Local portal
+                </span>
+                <div className="flex gap-2">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => onOpen(buildLocalPortalUrl(result.token))}
+                  >
+                    <ExternalLink />
+                    Open
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() =>
+                      onCopy(
+                        buildLocalPortalUrl(result.token),
+                        'Local portal link copied to clipboard.'
+                      )
+                    }
+                  >
+                    <Copy />
+                    Copy
+                  </Button>
                 </div>
               </div>
 
-              <div className="space-y-1.5">
-                <Label>Redirect URL</Label>
-                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900/60">
-                  <p className="break-all font-mono text-xs text-zinc-700 dark:text-zinc-300">
-                    {result.redirectUrl}
-                  </p>
-                  <div className="mt-2.5 flex justify-end gap-2">
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={() => onOpen(result.redirectUrl)}
-                    >
-                      <ExternalLink />
-                      Open
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() =>
-                        onCopy(result.redirectUrl, 'Redirect URL copied to clipboard.')
-                      }
-                    >
-                      <Copy />
-                      Copy
-                    </Button>
-                  </div>
+              <div className="flex items-center justify-between gap-2 px-3 py-2">
+                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Redirect URL
+                </span>
+                <div className="flex gap-2">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => onOpen(result.redirectUrl)}
+                  >
+                    <ExternalLink />
+                    Open
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() =>
+                      onCopy(result.redirectUrl, 'Redirect URL copied to clipboard.')
+                    }
+                  >
+                    <Copy />
+                    Copy
+                  </Button>
                 </div>
               </div>
             </div>
